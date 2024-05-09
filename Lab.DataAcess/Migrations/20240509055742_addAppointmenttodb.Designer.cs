@@ -4,6 +4,7 @@ using Lab.DataAcess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240509055742_addAppointmenttodb")]
+    partial class addAppointmenttodb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +64,7 @@ namespace Lab.DataAcess.Migrations
 
                     b.HasIndex("ApplicaationUserId");
 
-                    b.ToTable("Appointments", (string)null);
+                    b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("Lab.Models.Client", b =>
@@ -111,7 +114,7 @@ namespace Lab.DataAcess.Migrations
 
                     b.HasIndex("OfficerId");
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("Clients");
 
                     b.HasData(
                         new
@@ -227,7 +230,7 @@ namespace Lab.DataAcess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies", (string)null);
+                    b.ToTable("Companies");
 
                     b.HasData(
                         new
@@ -279,7 +282,7 @@ namespace Lab.DataAcess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Officers", (string)null);
+                    b.ToTable("Officers");
 
                     b.HasData(
                         new

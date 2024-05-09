@@ -13,6 +13,7 @@ namespace Lab.DataAcess.Data
         public DbSet<Officer> Officers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,7 +52,41 @@ namespace Lab.DataAcess.Data
                              Pincode = 56236
 
                });
+
+
               
+            //modelBuilder.Entity<Appointment>().HasData(
+            //   new Appointment { Id = 1,
+            //                 CuName = "Chiku", 
+            //                 CMobile = 1,
+            //                 CLandMark = "Baragachha",
+            //                 CPos = "Amba",
+            //                 CDist = "tulasi",
+            //                 CPin = 566,
+            //                 ApplicaationUserId = "62"
+
+            //   },
+            //   new Appointment { Id = 2,
+            //                 CuName = "Chdiku", 
+            //                 CMobile = 12,
+            //                 CLandMark = "Baragdsdachha",
+            //                 CPos = "Amdba",
+            //                 CDist = "tuldcasi",
+            //                 CPin = 566,
+            //                 ApplicaationUserId = "32"
+
+            //   },
+            //   new Appointment { Id = 3,
+            //                 CuName = "Chdfiku", 
+            //                 CMobile = 132,
+            //                 CLandMark = "Baragaachha",
+            //                 CPos = "Adxcmba",
+            //                 CDist = "tusxdlasi",
+            //                 CPin = 56236,
+            //                 ApplicaationUserId = "43"
+
+            //   });
+
 
 
             modelBuilder.Entity<Client>().HasData(

@@ -1,0 +1,83 @@
+﻿@model Appointment
+
+
+
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2 ">@(Model.Id != 0 ? "Update" : "Create") Appointment</h2>
+            </div>
+        </div>
+    </div>
+    <div class=" card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Id" hidden />
+            <div class="row">
+                <div class="col-12">
+                    <div class="border p-3 mt-4">
+
+                        @* <div class="text-danger" asp-validation-summary="ModelOnly"></div> *@
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CuName" class="form-control border-0 shadow" />
+                            <label asp-for="CuName" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CuName" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CMobile" class="form-control border-0 shadow" />
+                            <label asp-for="CMobile" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CMobile" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CDist" class="form-control border-0 shadow" />
+                            <label asp-for="CDist" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CDist" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CPos" class="form-control border-0 shadow" />
+                            <label asp-for="CPos" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CPos" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CPin" class="form-control border-0 shadow" />
+                            <label asp-for="CPin" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CPin" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="CLandMark" class="form-control border-0 shadow" />
+                            <label asp-for="CLandMark" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="CLandMark" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="row pt-2">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary text-dark form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary  text-dark form-control">Create</button>
+                                }
+
+                            </div>
+                            <div class=" col-6 col-md-3">
+                                <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-primary text-dark border form-control">
+                                    Back To List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
