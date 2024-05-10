@@ -473,9 +473,6 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Dist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -484,6 +481,9 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OfficerId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Pincode")
                         .IsRequired()
                         .HasColumnType("int");
@@ -491,7 +491,7 @@ namespace Lab.DataAcess.Migrations
                     b.Property<int>("Pnumb")
                         .HasColumnType("int");
 
-                    b.HasIndex("CompanyId");
+                    b.HasIndex("OfficerId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -560,11 +560,11 @@ namespace Lab.DataAcess.Migrations
 
             modelBuilder.Entity("Lab.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Lab.Models.Company", "Company")
+                    b.HasOne("Lab.Models.Officer", "Officer")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("OfficerId");
 
-                    b.Navigation("Company");
+                    b.Navigation("Officer");
                 });
 #pragma warning restore 612, 618
         }
