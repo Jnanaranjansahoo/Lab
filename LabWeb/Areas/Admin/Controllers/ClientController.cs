@@ -110,35 +110,35 @@ namespace LabWeb.Areas.Admin.Controllers
                 });
                 return View(clientVM);
             }
-            public IActionResult Delete(int? id)
+        }
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
             {
-                if (id == null || id == 0)
-                {
-                    return NotFound();
-                }
-                Client? clientFromDb = _unitOfWork.Client.Get(u => u.Id == id);
-                if (clientFromDb == null)
-                {
-                    return NotFound();
-                }
-
-                return View(clientFromDb);
-
+                return NotFound();
             }
-            [HttpPost, ActionName("Delete")]
-            public IActionResult DeletePOST(int? id)
+            Client? clientFromDb = _unitOfWork.Client.Get(u => u.Id == id);
+            if (clientFromDb == null)
             {
-                Cilent? obj = _unitOfWork.Client.Get(u => u.Id == id);
-                if (obj == null)
-                {
-                    return NotFound();
-                }
-                _unitOfWork.Client.Remove(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Officer Update Successfully";
-                return RedirectToAction("Index");
-
+                return NotFound();
             }
+
+            return View(clientFromDb);
+
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Client? obj = _unitOfWork.Client.Get(u => u.Id == id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Client.Remove(obj);
+            _unitOfWork.Save();
+            TempData["success"] = "Officer Update Successfully";
+            return RedirectToAction("Index");
+
         }
 
 
