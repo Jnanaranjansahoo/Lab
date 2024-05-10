@@ -42,7 +42,7 @@
     <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
+   @*  <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LabWeb</a>
@@ -52,14 +52,20 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
                         </li>
-                       @*  @if (User.IsInRole(SD.Role_Admin))
-                        { *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
+                        </li>
+                        
+                        
+                        @if (User.IsInRole(SD.Role_Admin))
+                        {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Content Manegment
@@ -79,13 +85,13 @@
 
                                 </ul>
                             </li>
-                        @* } *@
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
-    </header>
+    </header> *@
     <div class="">
         <main role="main" class="pb-3">
             <partial name="_Notification" />

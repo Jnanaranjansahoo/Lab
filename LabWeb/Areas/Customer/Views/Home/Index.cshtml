@@ -54,11 +54,16 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
+                    </li>
+
+
                     @*  @if (User.IsInRole(SD.Role_Admin))
                     { *@
                     <li class="nav-item dropdown">
@@ -83,7 +88,7 @@
                     @* } *@
                 </ul>
             </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+            <partial name="_LoginPartial" />
         </div>
     </nav>
     <!-- Navbar End -->

@@ -124,9 +124,9 @@ namespace LabWeb.Areas.Identity.Pages.Account
             public String? Dist { get; set; }
             [Required]
             public int? Pincode { get; set; }
-            public int? CompanyId { get; set; }
+            public int? OfficerId { get; set; }
             [ValidateNever]
-            public IEnumerable<SelectListItem> CompanyList { get; set; }
+            public IEnumerable<SelectListItem> OfficerList { get; set; }
 
         }
 
@@ -138,7 +138,7 @@ namespace LabWeb.Areas.Identity.Pages.Account
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Company)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Officer)).GetAwaiter().GetResult();
             }
 
             Input = new()
@@ -148,7 +148,7 @@ namespace LabWeb.Areas.Identity.Pages.Account
                     Text = i,
                     Value = i
                 }),
-                CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
+                OfficerList = _unitOfWork.Officer.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
@@ -176,9 +176,9 @@ namespace LabWeb.Areas.Identity.Pages.Account
                 user.Dist = Input.Dist;
                 user.Pincode = Input.Pincode;
 
-                if (Input.Role == SD.Role_Company)
+                if (Input.Role == SD.Role_Officer)
                 {
-                    user.CompanyId = Input.CompanyId;
+                    user.OfficerId = Input.OfficerId;
                 }
 
                 var result = await _userManager.CreateAsync(user, Input.Password);

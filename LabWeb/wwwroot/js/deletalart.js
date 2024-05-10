@@ -5,6 +5,7 @@ $(document).ready(function () {
 });
 
 
+
 function Delete(url) {
     Swal.fire({
         title: "Are you sure?",

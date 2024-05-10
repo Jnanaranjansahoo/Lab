@@ -10,7 +10,7 @@ namespace Lab.DataAcess.Repository.IRepository
     {
         IOfficerRepository Officer { get; }
         IClientRepository Client { get; }
-        ICompanyRepository Company { get; }
+       
         void Save();
     }
 }
