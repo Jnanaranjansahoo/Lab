@@ -110,42 +110,70 @@ namespace LabWeb.Areas.Admin.Controllers
                 });
                 return View(clientVM);
             }
-
-        }
-
-
-        #region API CALLS
-
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            List<Client> objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
-            return Json(new { data = objClientList });
-        }
-        [HttpDelete]
-        public IActionResult Delete(int? id)
-        {
-            var clientToBeDeleted = _unitOfWork.Client.Get(u => u.Id == id);
-            if (clientToBeDeleted == null)
+            public IActionResult Delete(int? id)
             {
-                return Json(new { success = false, Message = "Error while deleting" });
+                if (id == null || id == 0)
+                {
+                    return NotFound();
+                }
+                Client? clientFromDb = _unitOfWork.Client.Get(u => u.Id == id);
+                if (clientFromDb == null)
+                {
+                    return NotFound();
+                }
+
+                return View(clientFromDb);
+
             }
-            var oldImagePath =
-                            Path.Combine(_webHostEnvironment.WebRootPath,
-                            clientToBeDeleted.ImageUrl.TrimStart('\\'));
-
-
-            if (System.IO.File.Exists(oldImagePath))
+            [HttpPost, ActionName("Delete")]
+            public IActionResult DeletePOST(int? id)
             {
-                System.IO.File.Delete(oldImagePath);
+                Cilent? obj = _unitOfWork.Client.Get(u => u.Id == id);
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                _unitOfWork.Client.Remove(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "Officer Update Successfully";
+                return RedirectToAction("Index");
+
             }
-
-            _unitOfWork.Client.Remove(clientToBeDeleted);
-            _unitOfWork.Save();
-
-
-            return Json(new { success = true, message = "Delete Successful" });
         }
-        #endregion
+
+
+        //#region API CALLS
+
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    List<Client> objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
+        //    return Json(new { data = objClientList });
+        //}
+        //[HttpDelete]
+        //public IActionResult Delete(int? id)
+        //{
+        //    var clientToBeDeleted = _unitOfWork.Client.Get(u => u.Id == id);
+        //    if (clientToBeDeleted == null)
+        //    {
+        //        return Json(new { success = false, Message = "Error while deleting" });
+        //    }
+        //    var oldImagePath =
+        //                    Path.Combine(_webHostEnvironment.WebRootPath,
+        //                    clientToBeDeleted.ImageUrl.TrimStart('\\'));
+
+
+        //    if (System.IO.File.Exists(oldImagePath))
+        //    {
+        //        System.IO.File.Delete(oldImagePath);
+        //    }
+
+        //    _unitOfWork.Client.Remove(clientToBeDeleted);
+        //    _unitOfWork.Save();
+
+
+        //    return Json(new { success = true, message = "Delete Successful" });
+        //}
+        //#endregion
     }
 }

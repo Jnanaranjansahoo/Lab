@@ -51,13 +51,38 @@
                     </tr>
 
                 </thead>
-
+                <tbody>
+                    @foreach (var obj in Model.OrderBy(u => u.Id))
+                    {
+                        <tr>
+                            <td>@obj.CName</td>
+                            <td>@obj.Mobile</td>
+                            <td>@obj.Dist</td>
+                            <td>@obj.Pos</td>
+                            <td>@obj.Pin</td>
+                            <td>@obj.LandMark</td>
+                            <td>@obj.Total</td>
+                            <td>@obj.Officer.Name</td>
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Client" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </a>
+                                    <a asp-controller="Client" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                        <i class="bi bi-trash-fill"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script src="~/js/client.js"></script>
-}
 
+
+@section Scripts {
+    <script src="~/js/deletalart.js"></script>
+}  
