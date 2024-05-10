@@ -32,6 +32,9 @@ namespace Lab.Models
         [Display(Name = "Land Mark")]
         public string? CLandMark { get; set; }
 
-       
+        public string? ApplicaationUserId { get; set; }
+        [ForeignKey("ApplicaationUserId")]
+        [ValidateNever]
+        public ApplicationUser? ApplicationUser { get; set; }
     }
 }
