@@ -12,14 +12,14 @@ namespace Lab.DataAcess.Repository
     {
         private ApplicationDbContext _db;
         public IOfficerRepository Officer { get; private set; }
-        public ICompanyRepository Company { get; private set; }
+       
         public IClientRepository Client { get; private set; }
         public UnitOfWork(ApplicationDbContext db) 
         {
             _db = db;
             Officer = new OfficerRepository(_db);
             Client = new ClientRepository(_db);
-            Company = new CompanyRepository(_db);
+           
         }
         
 

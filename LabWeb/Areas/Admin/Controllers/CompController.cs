@@ -13,60 +13,60 @@ namespace LabWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     //[Authorize(Roles = SD.Role_Admin)]
-    public class CompanyController : Controller
+    public class CompController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-       public CompanyController(IUnitOfWork unitOfWork)
+        public CompController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-           
+
         }
         public IActionResult Index()
         {
-            List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
+            List<Officer> objOfficerList = _unitOfWork.Officer.GetAll().ToList();
 
-            return View(objCompanyList);
+            return View(objOfficerList);
         }
         public IActionResult Upsert(int? id)
         {
 
-           
+
             if (id == null || id == 0)
             {
                 //Create
 
-                return View(new Company());
+                return View(new Officer());
             }
             else
             {
                 //update
 
-                Company companyObj = _unitOfWork.Company.Get(u => u.Id == id);
-                return View(companyObj);
+                Officer officerObj = _unitOfWork.Officer.Get(u => u.Id == id);
+                return View(officerObj);
             }
         }
         [HttpPost]
-        public IActionResult Upsert(Company CompanyObj)
+        public IActionResult Upsert(Officer OfficerObj)
         {
 
             if (ModelState.IsValid)
             {
-                if (CompanyObj.Id == 0)
+                if (OfficerObj.Id == 0)
                 {
-                    _unitOfWork.Company.Add(CompanyObj);
+                    _unitOfWork.Officer.Add(OfficerObj);
                 }
                 else
                 {
-                    _unitOfWork.Company.Update(CompanyObj);
+                    _unitOfWork.Officer.Update(OfficerObj);
                 }
 
                 _unitOfWork.Save();
-                TempData["success"] = "Company Created Successfully";
+                TempData["success"] = "Officer Created Successfully";
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(CompanyObj);
+                return View(OfficerObj);
             }
 
         }
@@ -77,19 +77,19 @@ namespace LabWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
-            return Json(new { data = objCompanyList });
+            List<Officer> objOfficerList = _unitOfWork.Officer.GetAll().ToList();
+            return Json(new { data = objOfficerList });
         }
         [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            var companyToBeDeleted = _unitOfWork.Company.Get(u => u.Id == id);
-            if (companyToBeDeleted == null)
+            var officerToBeDeleted = _unitOfWork.Officer.Get(u => u.Id == id);
+            if (officerToBeDeleted == null)
             {
                 return Json(new { success = false, Message = "Error while deleting" });
             }
-            
-            _unitOfWork.Company.Remove(companyToBeDeleted);
+
+            _unitOfWork.Officer.Remove(officerToBeDeleted);
             _unitOfWork.Save();
 
 

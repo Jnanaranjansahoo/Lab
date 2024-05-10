@@ -14,7 +14,7 @@
                 <div class="col-6">
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-controller="Officer" asp-action="Create" class="btn btn-primary">
+                    <a asp-controller="Officer" asp-action="Upsart" class="btn btn-primary">
                         <i class="bi bi-plus-circle"></i> Create New Officer
                     </a>
                 </div>
@@ -24,36 +24,39 @@
 
                     <tr>
                         <th>
-                            Officers Name
+                            Name
                         </th>
                         <th>
-                            Costumar
+                            Mobile No.
                         </th>
-                        <th></th>
+                        <th>
+                            District
+                        </th>
+                        <th>
+                            Pin Code
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Aadhar
+                        </th>
+                        <th>
+                            Pan Card
+                        </th>
+                   
                     </tr>
 
                 </thead>
-                <tbody>
-                    @foreach (var obj in Model.OrderBy(u => u.Cost))
-                    {
-                        <tr>
-                            <td>@obj.Name</td>
-                            <td>@obj.Cost</td>
-                            <td>
-                                <div class="w-75 btn-group" role="group">
-                                    <a asp-controller="Officer" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
-                                    <a asp-controller="Officer" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                                        <i class="bi bi-trash-fill"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
+                
             </table>
         </div>
     </div>
 </div>
+@section Scripts {
+    <script src="~/js/officer.js"></script>
+}
 

@@ -19,10 +19,10 @@ namespace Lab.Models
         public String? Dist { get; set; }
         [Required]
         public int? Pincode { get; set; }
-        public int? CompanyId { get; set; }
-        [ForeignKey("CompanyId")]
+        public int? OfficerId { get; set; }
+        [ForeignKey("OfficerId")]
         [ValidateNever]
-        public Company? Company { get; set; }
+        public Officer? Officer { get; set; }
 
     }
 }

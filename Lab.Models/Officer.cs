@@ -7,10 +7,20 @@ namespace Lab.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Enter Name")]
-        public string? Name { get; set; }
-
-        [Display(Name = "Costumor No.")]
-        public int? Cost { get; set; }
+        public String? Name { get; set; }
+        [Required]
+        public int Pnumb { get; set; }
+        [Required]
+        public String? Address { get; set; }
+        [Required]
+        public String? City { get; set; }
+        [Required]
+        public String? Dist { get; set; }
+        [Required]
+        public int? Pincode { get; set; }
+        [Required]
+        public int? Aadhar { get; set;}
+        [Required]
+        public string? Pancard { get; set; }
     }
 }

@@ -12,46 +12,37 @@ namespace Lab.DataAcess.Data
         }
         public DbSet<Officer> Officers { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Company> Companies { get; set; }
+        
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Officer>().HasData(
-                new Officer { Id = 1, Name = "Male", Cost = 1 },
-                new Officer { Id = 2, Name = "FeMale", Cost = 2 }
+                new Officer {
+                    Id = 1,
+                    Name = "Chiku",
+                    Pnumb = 1,
+                    Address = "Baragachha",
+                    City = "Amba",
+                    Dist = "tulasi",
+                    Pincode = 566,
+                    Aadhar = 4576,
+                    Pancard="462gfsdg"
+                },
+                new Officer { Id = 2,
+                    Name = "Chdiku",
+                    Pnumb = 12,
+                    Address = "Baragdsdachha",
+                    City = "Amdba",
+                    Dist = "tuldcasi",
+                    Pincode = 566,
+                    Aadhar = 45736,
+                    Pancard = "46dt2gfsdg"
+                }
                 );
 
-            modelBuilder.Entity<Company>().HasData(
-               new Company { Id = 1,
-                             Name = "Chiku", 
-                             Pnumb = 1,
-                             Address = "Baragachha",
-                             City = "Amba",
-                             Dist = "tulasi",
-                             Pincode = 566
-
-               },
-               new Company { Id = 2,
-                             Name = "Chdiku", 
-                             Pnumb = 12,
-                             Address = "Baragdsdachha",
-                             City = "Amdba",
-                             Dist = "tuldcasi",
-                             Pincode = 566
-
-               },
-               new Company { Id = 3,
-                             Name = "Chdfiku", 
-                             Pnumb = 132,
-                             Address = "Baragaachha",
-                             City = "Adxcmba",
-                             Dist = "tusxdlasi",
-                             Pincode = 56236
-
-               });
-              
+           
 
 
             modelBuilder.Entity<Client>().HasData(
