@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240508062954_addcompanytable")]
-    partial class addcompanytable
+    [Migration("20240510045726_adddatabasetoproject")]
+    partial class adddatabasetoproject
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -189,6 +189,38 @@ namespace Lab.DataAcess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Baragachha",
+                            City = "Amba",
+                            Dist = "tulasi",
+                            Name = "Chiku",
+                            Pincode = 566,
+                            Pnumb = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Baragdsdachha",
+                            City = "Amdba",
+                            Dist = "tuldcasi",
+                            Name = "Chdiku",
+                            Pincode = 566,
+                            Pnumb = 12
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Baragaachha",
+                            City = "Adxcmba",
+                            Dist = "tusxdlasi",
+                            Name = "Chdfiku",
+                            Pincode = 56236,
+                            Pnumb = 132
+                        });
                 });
 
             modelBuilder.Entity("Lab.Models.Officer", b =>
@@ -444,6 +476,9 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Dist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -458,6 +493,8 @@ namespace Lab.DataAcess.Migrations
 
                     b.Property<int>("Pnumb")
                         .HasColumnType("int");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -522,6 +559,15 @@ namespace Lab.DataAcess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Lab.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Lab.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }
