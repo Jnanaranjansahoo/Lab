@@ -61,8 +61,8 @@
                     </li>
 
 
-                    @*  @if (User.IsInRole(SD.Role_Admin))
-                    { *@
+                     @if (User.IsInRole(SD.Role_Admin))
+                    {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Content Manegment
@@ -82,7 +82,22 @@
 
                         </ul>
                     </li>
-                    @* } *@
+                    }
+                    @if (User.IsInRole(SD.Role_Officer))
+                    {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Content Manegment
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                     }
                 </ul>
             </div>
             <partial name="_LoginPartial" />
