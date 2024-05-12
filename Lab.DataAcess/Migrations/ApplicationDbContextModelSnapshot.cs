@@ -22,6 +22,75 @@ namespace Lab.DataAcess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Lab.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CDist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CLandMark")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CMobile")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CPin")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CPos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CuName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CDist = "Baragachha",
+                            CLandMark = "566",
+                            CMobile = 1,
+                            CPin = 564,
+                            CPos = "Amba",
+                            CuName = "Chiku"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CDist = "Baragdsdachha",
+                            CLandMark = "566",
+                            CMobile = 12,
+                            CPin = 42,
+                            CPos = "Amdba",
+                            CuName = "Chdiku"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CDist = "Baragaachha",
+                            CLandMark = "56236",
+                            CMobile = 132,
+                            CPin = 45,
+                            CPos = "Adxcmba",
+                            CuName = "Chdfiku"
+                        });
+                });
+
             modelBuilder.Entity("Lab.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -186,38 +255,6 @@ namespace Lab.DataAcess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Baragachha",
-                            City = "Amba",
-                            Dist = "tulasi",
-                            Name = "Chiku",
-                            Pincode = 566,
-                            Pnumb = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Baragdsdachha",
-                            City = "Amdba",
-                            Dist = "tuldcasi",
-                            Name = "Chdiku",
-                            Pincode = 566,
-                            Pnumb = 12
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Baragaachha",
-                            City = "Adxcmba",
-                            Dist = "tusxdlasi",
-                            Name = "Chdfiku",
-                            Pincode = 56236,
-                            Pnumb = 132
-                        });
                 });
 
             modelBuilder.Entity("Lab.Models.Officer", b =>
@@ -473,9 +510,6 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Dist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -484,6 +518,9 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OfficerId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Pincode")
                         .IsRequired()
                         .HasColumnType("int");
@@ -491,7 +528,7 @@ namespace Lab.DataAcess.Migrations
                     b.Property<int>("Pnumb")
                         .HasColumnType("int");
 
-                    b.HasIndex("CompanyId");
+                    b.HasIndex("OfficerId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -560,11 +597,11 @@ namespace Lab.DataAcess.Migrations
 
             modelBuilder.Entity("Lab.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("Lab.Models.Company", "Company")
+                    b.HasOne("Lab.Models.Officer", "Officer")
                         .WithMany()
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("OfficerId");
 
-                    b.Navigation("Company");
+                    b.Navigation("Officer");
                 });
 #pragma warning restore 612, 618
         }

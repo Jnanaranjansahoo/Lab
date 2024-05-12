@@ -1,7 +1,4 @@
-﻿
-@model Officer
-
-
+﻿ @model List<Appointment>
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -71,11 +68,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Clints</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Appointment</a>
+                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Appointment" asp-action="Appointment">Appointment</a>
                         </li>
 
                     </ul>
@@ -90,7 +87,7 @@
                     <ul class="dropdown-menu">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Clints</a>
                         </li>
 
                     </ul>
@@ -102,47 +99,83 @@
     </div>
 </nav>
 <!-- Navbar End -->
-
-<div class="card shadow border-0 m-4">
+<div class="card shadow border-0 my-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white">Delete Officer</h2>
+                <h2 class="text-white py-2 ">Appointment List</h2>
             </div>
         </div>
     </div>
     <div class=" card-body p-4">
-        <form method="post">
-            <input asp-for="Id" hidden />
-
-            <div class="border p-3">
-
-
-                <div class="form-floating py-2 col-12">
-                    <input asp-for="Name" disabled class="form-control border-0 shadow" />
-                    <label asp-for="Name" class="ms-2"></label>
-
+        <div class="container">
+            <div class="row pb-3">
+                <div class="col-6">
                 </div>
-                <div class="form-floating py-2 col-12">
-                    <input asp-for="Cost" disabled class="form-control border-0 shadow" />
-                    <label asp-for="Cost" class="ms-2"></label>
-
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6 col-md-3">
-                        <button type="submit" class="btn btn-danger form-control">Delete</button>
-                    </div>
-                    <div class=" col-6 col-md-3">
-                        <a asp-controller="Officer" asp-action="Index" class="btn btn-secondary border form-control">
-                            Back To List
-                        </a>
-                    </div>
+                <div class="col-6 text-end">
+                    <a asp-controller="Appointment" asp-action="Upsert" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Create New Appointment
+                    </a>
                 </div>
             </div>
-        </form>
+            <table id="tblData" class="table table-bordered table-striped">
+                <thead>
+
+                    <tr>
+                        <th>
+                            Appointments Name
+                        </th>
+                        <th>
+                            Mobile No.
+                        </th>
+                        <th>
+                            District
+                        </th>
+                        <th>
+                            Post
+                        </th>
+                        <th>
+                            Pin Code
+                        </th>
+                        <th>
+                            Land Mark
+                        </th>
+                        
+                        
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model.OrderBy(u => u.Id))
+                    {
+                        <tr>
+                            <td>@obj.CuName</td>
+                            <td>@obj.CMobile</td>
+                            <td>@obj.CDist</td>
+                            <td>@obj.CPos</td>
+                            <td>@obj.CPin</td>
+                            <td>@obj.CLandMark</td>
+                            
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Appointment" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </a>
+                                    <a asp-controller="Appointment" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                        <i class="bi bi-trash-fill"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
 
 
-
+@section Scripts {
+    <script src="~/js/deletalart.js"></script>
+}  

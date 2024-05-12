@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240508062954_addcompanytable")]
-    partial class addcompanytable
+    [Migration("20240512092114_addappointmentttodb")]
+    partial class addappointmentttodb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,75 @@ namespace Lab.DataAcess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Lab.Models.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CDist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CLandMark")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CMobile")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CPin")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CPos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CuName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CDist = "Baragachha",
+                            CLandMark = "566",
+                            CMobile = 1,
+                            CPin = 564,
+                            CPos = "Amba",
+                            CuName = "Chiku"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CDist = "Baragdsdachha",
+                            CLandMark = "566",
+                            CMobile = 12,
+                            CPin = 42,
+                            CPos = "Amdba",
+                            CuName = "Chdiku"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CDist = "Baragaachha",
+                            CLandMark = "56236",
+                            CMobile = 132,
+                            CPin = 45,
+                            CPos = "Adxcmba",
+                            CuName = "Chdfiku"
+                        });
+                });
 
             modelBuilder.Entity("Lab.Models.Client", b =>
                 {
@@ -452,12 +521,17 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("OfficerId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Pincode")
                         .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("Pnumb")
                         .HasColumnType("int");
+
+                    b.HasIndex("OfficerId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -522,6 +596,15 @@ namespace Lab.DataAcess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Lab.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Lab.Models.Officer", "Officer")
+                        .WithMany()
+                        .HasForeignKey("OfficerId");
+
+                    b.Navigation("Officer");
                 });
 #pragma warning restore 612, 618
         }

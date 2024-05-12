@@ -13,6 +13,7 @@ namespace Lab.DataAcess.Data
         public DbSet<Officer> Officers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,32 +24,32 @@ namespace Lab.DataAcess.Data
                 new Officer { Id = 2, Name = "FeMale", Cost = 2 }
                 );
 
-            modelBuilder.Entity<Company>().HasData(
-               new Company { Id = 1,
-                             Name = "Chiku", 
-                             Pnumb = 1,
-                             Address = "Baragachha",
-                             City = "Amba",
-                             Dist = "tulasi",
-                             Pincode = 566
+            modelBuilder.Entity<Appointment>().HasData(
+               new Appointment { Id = 1,
+                             CuName = "Chiku", 
+                             CMobile = 1,
+                             CDist = "Baragachha",
+                             CPos = "Amba",
+                             CPin = 564,
+                             CLandMark = "566"
 
                },
-               new Company { Id = 2,
-                             Name = "Chdiku", 
-                             Pnumb = 12,
-                             Address = "Baragdsdachha",
-                             City = "Amdba",
-                             Dist = "tuldcasi",
-                             Pincode = 566
+               new Appointment { Id = 2,
+                             CuName = "Chdiku", 
+                             CMobile = 12,
+                             CDist = "Baragdsdachha",
+                             CPos = "Amdba",
+                             CPin = 42,
+                             CLandMark = "566"
 
                },
-               new Company { Id = 3,
-                             Name = "Chdfiku", 
-                             Pnumb = 132,
-                             Address = "Baragaachha",
-                             City = "Adxcmba",
-                             Dist = "tusxdlasi",
-                             Pincode = 56236
+               new Appointment { Id = 3,
+                             CuName = "Chdfiku", 
+                             CMobile = 132,
+                             CDist = "Baragaachha",
+                             CPos = "Adxcmba",
+                             CPin = 45,
+                             CLandMark = "56236"
 
                });
               

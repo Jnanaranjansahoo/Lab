@@ -74,7 +74,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Appointment</a>
                         </li>
 
                     </ul>
@@ -119,49 +119,49 @@
 
 
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="CName" class="form-control border-0 shadow" />
+                    <input asp-for="CName" disabled class="form-control border-0 shadow" />
                     <label asp-for="CName" class="ms-2 text-dark"></label>
                     
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Mobile" class="form-control border-0 shadow" />
+                    <input asp-for="Mobile" disabled class="form-control border-0 shadow" />
                     <label asp-for="Mobile" class="ms-2 text-dark"></label>
                    
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Dist" class="form-control border-0 shadow" />
+                    <input asp-for="Dist" disabled class="form-control border-0 shadow" />
                     <label asp-for="Dist" class="ms-2 text-dark"></label>
                     
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Pos" class="form-control border-0 shadow" />
+                    <input asp-for="Pos" disabled class="form-control border-0 shadow" />
                     <label asp-for="Pos" class="ms-2 text-dark"></label>
              
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Pin" class="form-control border-0 shadow" />
+                    <input asp-for="Pin" disabled class="form-control border-0 shadow" />
                     <label asp-for="Pin" class="ms-2 text-dark"></label>
                    
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="LandMark" class="form-control border-0 shadow" />
+                    <textarea asp-for="LandMark" disabled class="form-control border-0 shadow" ></textarea>
                     <label asp-for="LandMark" class="ms-2 text-dark"></label>
                     
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Total" class="form-control border-0 shadow text-dark" />
+                    <input asp-for="Total" disabled class="form-control border-0 shadow text-dark" />
                     <label class="ms-2">Total Price</label>
                    
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <select asp-for="@Model.OfficerId" class="form-select text-dark border-0 shadow">
-                        <option disabled selected>--Select Officer Name--</option>
+                    <select asp-for="@Model.OfficerId" disabled class="form-select text-dark border-0 shadow">
+                        @* <option disabled selected>--Select Officer Name--</option> *@
                     </select>
                     <label asp-for="OfficerId" class="ms-2"></label>
                     
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input type="file" name="file" class="form-control border-0 shadow" />
+                    <input type="file" disabled name="file" class="form-control border-0 shadow" />
                     <label asp-for="ImageUrl" class="ms-2 text-dark"></label>
                    
                 </div>

@@ -130,14 +130,27 @@ namespace LabWeb.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Client? obj = _unitOfWork.Client.Get(u => u.Id == id);
-            if (obj == null)
+
+            var clientToBeDeleted = _unitOfWork.Client.Get(u => u.Id == id);
+            if (clientToBeDeleted == null)
             {
-                return NotFound();
+                return Json(new { success = false, Message = "Error while deleting" });
             }
-            _unitOfWork.Client.Remove(obj);
+            var oldImagePath =
+                            Path.Combine(_webHostEnvironment.WebRootPath,
+                            clientToBeDeleted.ImageUrl.TrimStart('\\'));
+
+
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
+
+            _unitOfWork.Client.Remove(clientToBeDeleted);
             _unitOfWork.Save();
-            TempData["success"] = "Officer Update Successfully";
+
+            TempData["success"] = "Client Deleted Successfully";
+            
             return RedirectToAction("Index");
 
         }
