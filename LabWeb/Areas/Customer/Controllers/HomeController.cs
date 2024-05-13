@@ -31,7 +31,7 @@ namespace LabWeb.Areas.Customer.Controllers
 
             return View(objAppointmentList);
         }
-        [Authorize]
+       // [Authorize]
         public IActionResult Upsert(int? id)
         {
             if (id == null || id == 0)
@@ -52,8 +52,8 @@ namespace LabWeb.Areas.Customer.Controllers
         [HttpPost]
         public IActionResult Upsert(Appointment AppointmentObj)
         {
-
-            if (ModelState.IsValid)
+            if(AppointmentObj.Id != null)
+            //if (ModelState.IsValid)
             {
 
                 if (AppointmentObj.Id == 0)
