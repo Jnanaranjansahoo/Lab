@@ -3,6 +3,7 @@ using Lab.DataAcess.Repository.IRepository;
 using Lab.Models;
 using Lab.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -31,7 +32,7 @@ namespace LabWeb.Areas.Customer.Controllers
 
             return View(objAppointmentList);
         }
-       // [Authorize]
+        [Authorize]
         public IActionResult Upsert(int? id)
         {
             if (id == null || id == 0)
@@ -67,14 +68,23 @@ namespace LabWeb.Areas.Customer.Controllers
 
                 _unitOfWork.Save();
                 TempData["success"] = "Appointment Created Successfully";
-                return RedirectToAction("Appointment");
+                if(User.IsInRole(SD.Role_Admin))
+                {
+                    return RedirectToAction("Appointment");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+               
+                
             }
             else
             {
                 return View(AppointmentObj);
             }
         }
-        
+        [Authorize(Roles = SD.Role_Admin)]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
