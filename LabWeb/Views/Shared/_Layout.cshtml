@@ -42,56 +42,7 @@
     <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
-   @*  <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LabWeb</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav me-auto">
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
-                        </li>
-                        
-                        
-                        @if (User.IsInRole(SD.Role_Admin))
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Content Manegment
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        }
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header> *@
+   
     <div class="">
         <main role="main" class="pb-3">
             
@@ -119,21 +70,32 @@
                             <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3  col-md-6">
                         <h5 class="text-light mb-4">Services</h5>
-                        <a class="btn btn-link" href="">MCH</a>
-                        <a class="btn btn-link" href="">MCV</a>
-                        <a class="btn btn-link" href="">PVC</a>
-                        <a class="btn btn-link" href="">RBC</a>
-                        <a class="btn btn-link" href="">Hemoglobin</a>
+                        
+                            <li>
+                                <a class="btn btn-link" href="">MCH</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-link" href="">MCV</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-link" href="">PVC</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-link" href="">RBC</a>
+                            </li>
+                            <li>
+                                <a class="btn btn-link" href="">Hemoglobin</a>
+                            </li>
+                       
                     </div>
                     <div class="col-lg-3 col-md-6">
+
                         <h5 class="text-light mb-4">Quick Links</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Our Services</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Support</a>
+                        <li><a class="btn btn-link" href="">Home</a></li>
+                        <li><a class="btn btn-link" href="">About Us</a></li>
+                        <li><a class="btn btn-link" href="">Services</a></li>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h5 class="text-light mb-4">Newsletter</h5>

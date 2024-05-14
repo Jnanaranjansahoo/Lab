@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace LabWeb.Areas.Customer.Controllers
 {
@@ -42,17 +43,19 @@ namespace LabWeb.Areas.Customer.Controllers
                 return View(new Appointment());
             }
             else
-            {
+            { 
                 //update
 
                 Appointment appointmenObj = _unitOfWork.Appointment.Get(u => u.Id == id);
                 return View(appointmenObj);
             }
         }
-       
+        [Authorize]
         [HttpPost]
         public IActionResult Upsert(Appointment AppointmentObj)
         {
+            
+            
             if(AppointmentObj.Id != null)
             //if (ModelState.IsValid)
             {
