@@ -15,12 +15,14 @@ namespace Lab.DataAcess.Repository
         
         public IClientRepository Client { get; private set; }
         public IAppointmentRepository Appointment { get; private set; }
+        public IApplicationUserRepository ApplicationUser { get; private set; }
         public UnitOfWork(ApplicationDbContext db) 
         {
             _db = db;
             Officer = new OfficerRepository(_db);
             Client = new ClientRepository(_db);
             Appointment = new AppointmentRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
            
         }
         
