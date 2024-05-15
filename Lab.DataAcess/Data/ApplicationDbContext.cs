@@ -12,7 +12,6 @@ namespace Lab.DataAcess.Data
         }
         public DbSet<Officer> Officers { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Company> Companies { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -52,21 +52,26 @@ namespace LabWeb.Areas.Customer.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult Upsert(Appointment AppointmentObj)
+        public IActionResult Upsert(Appointment appointmentObj)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            appointmentObj.ApplicationUserId = userId;
+
+            Appointment appointmentFromDb = _unitOfWork.Appointment.Get(u=>u.ApplicationUserId == userId
+            && u.ClientId == appointmentObj.ClientId);
             
-            
-            if(AppointmentObj.Id != null)
+            if(appointmentObj.Id != null)
             //if (ModelState.IsValid)
             {
 
-                if (AppointmentObj.Id == 0)
+                if (appointmentObj.Id == 0)
                 {
-                    _unitOfWork.Appointment.Add(AppointmentObj);
+                    _unitOfWork.Appointment.Add(appointmentObj);
                 }
                 else
                 {
-                    _unitOfWork.Appointment.Update(AppointmentObj);
+                    _unitOfWork.Appointment.Update(appointmentObj);
                 }
 
                 _unitOfWork.Save();
@@ -78,13 +83,14 @@ namespace LabWeb.Areas.Customer.Controllers
                 else
                 {
                     return RedirectToAction("Index");
+                    //return RedirectToAction(nameof(Index));
                 }
                
                 
             }
             else
             {
-                return View(AppointmentObj);
+                return View(appointmentObj);
             }
         }
         [Authorize(Roles = SD.Role_Admin)]

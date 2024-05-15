@@ -17,6 +17,7 @@ namespace Lab.Models
         [Display(Name = "Enter Name")]
         public string? CuName { get; set; }
         [Required]
+        [Range(1000000000,9999999999,ErrorMessage ="Enter a valid mobile number")]
         [Display(Name = "Mobile No.")]
         public int? CMobile { get; set; }
         [Required]
@@ -34,12 +35,10 @@ namespace Lab.Models
         public int? ClientId { get; set; }
         [ForeignKey("ClientId")]
         [ValidateNever]
-        [Required]
         public Client? Client { get; set; }
         public string? ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
         [ValidateNever]
-        [Required]
         public ApplicationUser? ApplicationUser { get; set; }
     }
 }

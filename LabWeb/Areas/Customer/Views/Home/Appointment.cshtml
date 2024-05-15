@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Appointment" asp-action="Index">Clints</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                         </li>
 
                         <li class="nav-item">
@@ -123,6 +123,9 @@
 
                     <tr>
                         <th>
+                            Appointments Id
+                        </th>
+                        <th>
                             Appointments Name
                         </th>
                         <th>
@@ -149,6 +152,7 @@
                     @foreach (var obj in Model.OrderBy(u => u.Id))
                     {
                         <tr>
+                            <td>@obj.Id</td>
                             <td>@obj.CuName</td>
                             <td>@obj.CMobile</td>
                             <td>@obj.CDist</td>
