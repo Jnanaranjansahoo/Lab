@@ -14,6 +14,7 @@ namespace Lab.DataAcess.Repository
         public IOfficerRepository Officer { get; private set; }
         
         public IClientRepository Client { get; private set; }
+        public IArchiveRepository Archive { get; private set; }
         public IAppointmentRepository Appointment { get; private set; }
         public IApplicationUserRepository ApplicationUser { get; private set; }
         public UnitOfWork(ApplicationDbContext db) 
@@ -21,6 +22,7 @@ namespace Lab.DataAcess.Repository
             _db = db;
             Officer = new OfficerRepository(_db);
             Client = new ClientRepository(_db);
+            Archive = new ArchiveRepository(_db);
             Appointment = new AppointmentRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
            

@@ -12,6 +12,7 @@ namespace Lab.DataAcess.Repository.IRepository
         IClientRepository Client { get; }
         IAppointmentRepository Appointment { get; }
         IApplicationUserRepository ApplicationUser { get; }
+        IArchiveRepository Archive { get; }
        
         void Save();
       

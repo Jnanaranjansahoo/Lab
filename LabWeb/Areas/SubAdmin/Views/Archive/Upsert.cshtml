@@ -1,4 +1,6 @@
-﻿@model ClientVM
+﻿
+
+@model ArchiveVM
 
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -57,43 +59,43 @@
                 </li>
 
 
-                 @if (User.IsInRole(SD.Role_Admin))
+                @if (User.IsInRole(SD.Role_Admin))
                 {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Content Manegment
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
-                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Content Manegment
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Costumar" asp-controller="Home" asp-action="Appointment">Appointment</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Costumar" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                            </li>
 
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
                 }
                 @if (User.IsInRole(SD.Role_Officer))
                 {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Content Manegment
-                    </a>
-                    <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Content Manegment
+                        </a>
+                        <ul class="dropdown-menu">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            </li>
 
-                    </ul>
-                </li>
-                 }
+                        </ul>
+                    </li>
+                }
             </ul>
         </div>
         <partial name="_LoginPartial" />
@@ -105,69 +107,69 @@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2 ">@(Model.Client.Id != 0 ? "Update" : "Create") Client</h2>
+                <h2 class="text-white py-2 ">@(Model.Archive.Id != 0 ? "Update" : "Create") Client</h2>
             </div>
         </div>
     </div>
     <div class=" card-body p-4">
         <form method="post" class="row" enctype="multipart/form-data">
-            <input asp-for="Client.Id" hidden />
-            <input asp-for="Client.ImageUrl" hidden />
+            <input asp-for="Archive.Id" hidden />
+            <input asp-for="Archive.ImageUrl" hidden />
             <div class="row">
                 <div class="col-10">
                     <div class="border p-3 mt-4">
 
                         @* <div class="text-danger" asp-validation-summary="ModelOnly"></div> *@
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.CName" class="form-control border-0 shadow" />
-                            <label asp-for="Client.CName" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.CName" class="text-danger"></span>
+                            <input asp-for="Archive.CName" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.CName" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.CName" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.Mobile" class="form-control border-0 shadow" />
-                            <label asp-for="Client.Mobile" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.Mobile" class="text-danger"></span>
+                            <input asp-for="Archive.Mobile" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.Mobile" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.Mobile" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.Dist" class="form-control border-0 shadow" />
-                            <label asp-for="Client.Dist" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.Dist" class="text-danger"></span>
+                            <input asp-for="Archive.Dist" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.Dist" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.Dist" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.Pos" class="form-control border-0 shadow" />
-                            <label asp-for="Client.Pos" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.Pos" class="text-danger"></span>
+                            <input asp-for="Archive.Pos" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.Pos" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.Pos" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.Pin" class="form-control border-0 shadow" />
-                            <label asp-for="Client.Pin" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.Pin" class="text-danger"></span>
+                            <input asp-for="Archive.Pin" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.Pin" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.Pin" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.LandMark" class="form-control border-0 shadow" />
-                            <label asp-for="Client.LandMark" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.LandMark" class="text-danger"></span>
+                            <input asp-for="Archive.LandMark" class="form-control border-0 shadow" />
+                            <label asp-for="Archive.LandMark" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.LandMark" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Client.Total" class="form-control border-0 shadow text-dark" />
+                            <input asp-for="Archive.Total" class="form-control border-0 shadow text-dark" />
                             <label class="ms-2">Total Price</label>
-                            <span asp-validation-for="Client.Total" class="text-danger"></span>
+                            <span asp-validation-for="Archive.Total" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <select asp-for="@Model.Client.OfficerId" asp-items="@Model.OfficerList" class="form-select text-dark border-0 shadow">
+                            <select asp-for="@Model.Archive.OfficerId" asp-items="@Model.OfficerList" class="form-select text-dark border-0 shadow">
                                 <option disabled selected>--Select Officer Name--</option>
                             </select>
-                            <label asp-for="Client.OfficerId" class="ms-2"></label>
-                            <span asp-validation-for="Client.OfficerId" class="text-danger"></span>
+                            <label asp-for="Archive.OfficerId" class="ms-2"></label>
+                            <span asp-validation-for="Archive.OfficerId" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
                             <input type="file" name="file" class="form-control border-0 shadow" />
-                            <label asp-for="Client.ImageUrl" class="ms-2 text-dark"></label>
-                            <span asp-validation-for="Client.ImageUrl" class="text-danger"></span>
+                            <label asp-for="Archive.ImageUrl" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Archive.ImageUrl" class="text-danger"></span>
                         </div>
                         <div class="row pt-2">
                             <div class="col-6 col-md-3">
-                                @if (Model.Client.Id != 0)
+                                @if (Model.Archive.Id != 0)
                                 {
                                     <button type="submit" class="btn btn-primary text-dark form-control">Update</button>
                                 }
@@ -186,7 +188,7 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <img src="@Model.Client.ImageUrl" width="100%"
+                    <img src="@Model.Archive.ImageUrl" width="100%"
                          style="border-radius:5px; border:1px solid #bbb9b9" />
                 </div>
             </div>

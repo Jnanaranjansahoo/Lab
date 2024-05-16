@@ -4,6 +4,7 @@ using Lab.DataAcess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240516052028_addaechivetodb")]
+    partial class addaechivetodb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,53 +115,17 @@ namespace Lab.DataAcess.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<string>("Dist")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LandMark")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Mobile")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OfficerId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Pin")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Pos")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double?>("Total")
-                        .IsRequired()
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("OfficerId");
 
                     b.ToTable("Archives");
                 });
@@ -596,15 +563,9 @@ namespace Lab.DataAcess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Lab.Models.Officer", "Officer")
-                        .WithMany()
-                        .HasForeignKey("OfficerId");
-
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Client");
-
-                    b.Navigation("Officer");
                 });
 
             modelBuilder.Entity("Lab.Models.Client", b =>

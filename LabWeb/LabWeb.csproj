@@ -24,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\SubAdmin\Controllers\" />
-    <Folder Include="Areas\SubAdmin\Views\" />
     <Folder Include="wwwroot\images\client\" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿ @model List<Client>
+﻿@model Archive
+
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -99,94 +100,84 @@
     </div>
 </nav>
 <!-- Navbar End -->
-<div class="card shadow border-0 my-4">
+
+
+<div class="card shadow border-0 m-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2 ">Client List</h2>
+                <h2 class="text-white">Delete Client</h2>
             </div>
         </div>
     </div>
     <div class=" card-body p-4">
-        <div class="container">
-            <div class="row pb-3">
-                <div class="col-6">
+        <form method="post">
+            <input asp-for="Id" hidden />
+
+            <div class="border p-3">
+
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="CName" disabled class="form-control border-0 shadow" />
+                    <label asp-for="CName" class="ms-2 text-dark"></label>
+
                 </div>
-                <div class="col-6 text-end">
-                    <a asp-controller="Archive" asp-action="Upsert" class="btn btn-primary">
-                        <i class="bi bi-plus-circle"></i> Add New Client
-                    </a>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Mobile" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Mobile" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Dist" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Dist" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pos" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Pos" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pin" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Pin" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <textarea asp-for="LandMark" disabled class="form-control border-0 shadow"></textarea>
+                    <label asp-for="LandMark" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Total" disabled class="form-control border-0 shadow text-dark" />
+                    <label class="ms-2">Total Price</label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <select asp-for="@Model.OfficerId" disabled class="form-select text-dark border-0 shadow">
+                    </select>
+                    <label asp-for="OfficerId" class="ms-2"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input type="file" disabled name="file" class="form-control border-0 shadow" />
+                    <label asp-for="ImageUrl" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-danger form-control">Delete</button>
+                    </div>
+                    <div class=" col-6 col-md-3">
+                        <a asp-controller="Client" asp-action="Index" class="btn btn-secondary border form-control">
+                            Back To List
+                        </a>
+                    </div>
                 </div>
             </div>
-            <table id="tblData" class="table table-bordered table-striped">
-                <thead>
-
-                    <tr>
-                        <th>
-                            Clients Id
-                        </th>
-                        <th>
-                            Clients Name
-                        </th>
-                        <th>
-                            Mobile No.
-                        </th>
-                        <th>
-                            District
-                        </th>
-                        <th>
-                            Post
-                        </th>
-                        <th>
-                            Pin Code
-                        </th>
-                        <th>
-                            Land Mark
-                        </th>
-                        <th>
-                            Total Price
-                        </th>
-                        <th>
-                            Officer Name
-                        </th>
-
-                    </tr>
-
-                </thead>
-                <tbody>
-                    @foreach (var obj in Model.OrderBy(u => u.Id))
-                    {
-                        <tr>
-                            <td>@obj.Id</td>
-                            <td>@obj.CName</td>
-                            <td>@obj.Mobile</td>
-                            <td>@obj.Dist</td>
-                            <td>@obj.Pos</td>
-                            <td>@obj.Pin</td>
-                            <td>@obj.LandMark</td>
-                            <td>@obj.Total</td>
-                            <td>@obj.Officer.Name</td>
-                            <td>
-                                <div class="w-75 btn-group" role="group">
-                                    <a asp-controller="Archive" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
-                                    <a asp-controller="Archive" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                                        <i class="bi bi-trash-fill"></i> Delete
-                                    </a>
-                                   
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+        </form>
     </div>
 </div>
 
 
 
-@section Scripts {
-    <script src="~/js/deletalart.js"></script>
-}
+
