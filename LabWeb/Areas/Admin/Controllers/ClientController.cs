@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace LabWeb.Areas.Admin.Controllers
 {
@@ -25,8 +26,14 @@ namespace LabWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            
             List<Client> objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
-
+            if(objClientList != null)
+            {
+                objClientList = _unitOfWork.Client.GetAll(x=>x.ApplicationUserId == userId ).ToList();
+            }
             return View(objClientList);
         }
         public IActionResult Upsert(int? id)
@@ -58,6 +65,9 @@ namespace LabWeb.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(ClientVM clientVM, IFormFile? file)
         {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            clientVM.Client.ApplicationUserId = userId;
 
             if (ModelState.IsValid)
             {

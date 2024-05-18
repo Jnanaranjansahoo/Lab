@@ -11,6 +11,7 @@ namespace Lab.Models.ViewModels
     public class ClientVM
     {
         public Client Client { get; set; }
+        public int Count { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem>? OfficerList { get; set; }
     }
