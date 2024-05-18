@@ -148,7 +148,7 @@
                     </tr>
 
                 </thead>
-                <tbody>
+                @* <tbody>
                     @foreach (var obj in Model.OrderBy(u => u.Id))
                     {
                         <tr>
@@ -172,7 +172,7 @@
                             </td>
                         </tr>
                     }
-                </tbody>
+                </tbody> *@
             </table>
         </div>
     </div>
@@ -181,5 +181,5 @@
 
 
 @section Scripts {
-    <script src="~/js/deletalart.js"></script>
+    <script src="~/js/appointment.js"></script>
 }  
