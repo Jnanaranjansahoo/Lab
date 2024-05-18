@@ -1,4 +1,4 @@
-﻿ @model List<Client>
+﻿ @model List<Company>
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -68,7 +68,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Clints</a>
                         </li>
 
                         <li class="nav-item">
@@ -87,7 +87,7 @@
                     <ul class="dropdown-menu">
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Clints</a>
                         </li>
 
                     </ul>
@@ -103,7 +103,7 @@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2 ">Client List</h2>
+                <h2 class="text-white py-2 ">Company List</h2>
             </div>
         </div>
     </div>
@@ -113,8 +113,8 @@
                 <div class="col-6">
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-controller="Client" asp-action="Upsert" class="btn btn-primary">
-                        <i class="bi bi-plus-circle"></i> Create New Client
+                    <a asp-controller="Company" asp-action="Upsert" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Create New Company
                     </a>
                 </div>
             </div>
@@ -123,10 +123,10 @@
 
                     <tr>
                         <th>
-                            Clients Id
+                            Companys Id
                         </th>
                         <th>
-                            Clients Name
+                            Companys Name
                         </th>
                         <th>
                             Mobile No.
@@ -153,7 +153,7 @@
                     </tr>
 
                 </thead>
-                <tbody>
+               @*  <tbody>
                     @foreach (var obj in Model.OrderBy(u => u.Id))
                     {
                         <tr>
@@ -168,17 +168,17 @@
                             <td>@obj.Officer.Name</td>
                             <td>
                                 <div class="w-75 btn-group" role="group">
-                                    <a asp-controller="Client" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <a asp-controller="Company" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
-                                    <a asp-controller="Client" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <a asp-controller="Company" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                                         <i class="bi bi-trash-fill"></i> Delete
                                     </a>
                                 </div>
                             </td>
                         </tr>
                     }
-                </tbody>
+                </tbody> *@
             </table>
         </div>
     </div>
@@ -187,5 +187,5 @@
 
 
 @section Scripts {
-    <script src="~/js/deletalart.js"></script>
+    <script src="~/js/company.js"></script>
 }  

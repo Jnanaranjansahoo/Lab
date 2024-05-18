@@ -13,9 +13,9 @@ using System.Security.Claims;
 namespace LabWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    
+
     //[Authorize(Roles = SD.Role_Officer)]
-    public class CompanyController : Controller
+    public class CompanyController : Controller, ICompanyController
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -28,7 +28,7 @@ namespace LabWeb.Areas.Admin.Controllers
         {
             //var claimsIdentity = (ClaimsIdentity)User.Identity;
             //var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            
+
             List<Company> objCompanyList = _unitOfWork.Company.GetAll(includeProperties: "Officer").ToList();
             //if(objCompanyList != null)
             //{

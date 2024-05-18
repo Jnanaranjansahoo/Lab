@@ -59,7 +59,7 @@ namespace LabWeb.Areas.Customer.Controllers
             appointmentObj.ApplicationUserId = userId;
 
             Appointment appointmentFromDb = _unitOfWork.Appointment.Get(u=>u.ApplicationUserId == userId
-            && u.ClientId == appointmentObj.ClientId);
+            && u.CompanyId == appointmentObj.CompanyId);
             
             if(appointmentObj.Id != null)
             //if (ModelState.IsValid)
