@@ -87,7 +87,6 @@ namespace LabWeb.Areas.Customer.Controllers
                     //return RedirectToAction(nameof(Index));
                 }
                
-                
             }
             else
             {
