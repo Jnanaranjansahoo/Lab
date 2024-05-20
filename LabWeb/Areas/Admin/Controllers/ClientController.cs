@@ -32,6 +32,17 @@ namespace LabWeb.Areas.Admin.Controllers
 
             List<Client> objClientList;
 
+            //if (User.IsInRole(SD.Role_Admin))
+            //{
+            //    objClientList = _unitOfWork.Client.GetAll(includeProperties: "ApplicationUser").ToList();
+            //}
+            //else
+            //{
+            //    var cliaimsIdentity = (ClaimsIdentity)User.Identity;
+            //    var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            //}
+
             if (isAdmin)
             {
                 objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
