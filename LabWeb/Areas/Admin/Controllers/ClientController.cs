@@ -26,8 +26,7 @@ namespace LabWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            
             var isAdmin = User.IsInRole("Admin");
 
             List<Client> objClientList;
