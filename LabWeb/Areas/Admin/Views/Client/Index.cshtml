@@ -153,7 +153,7 @@
                     </tr>
 
                 </thead>
-                @* <tbody>
+                <tbody>
                     @foreach (var obj in Model.OrderBy(u => u.Id))
                     {
                         <tr>
@@ -178,7 +178,7 @@
                             </td>
                         </tr>
                     }
-                </tbody> *@
+                </tbody>
             </table>
         </div>
     </div>
@@ -186,6 +186,6 @@
 
 
 
-@section Scripts {
+@* @section Scripts {
     <script src="~/js/client.js"></script>
-}  
+}  *@ 

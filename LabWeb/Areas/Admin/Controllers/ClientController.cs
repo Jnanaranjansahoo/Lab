@@ -46,12 +46,14 @@ namespace LabWeb.Areas.Admin.Controllers
                     Text = u.Name,
                     Value = u.Id.ToString()
                 }),
+                
+                
                 Client = new Client()
             };
             if (id == null || id == 0)
             {
                 //Create
-
+                
                 return View(clientVM);
             }
             else
@@ -68,6 +70,8 @@ namespace LabWeb.Areas.Admin.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             clientVM.Client.ApplicationUserId = userId;
+
+            //ClientVM clientVMFormDb = _unitOfWork.Client.Get(u=>u.ApplicationUserId == userId);
 
             if (ModelState.IsValid)
             {

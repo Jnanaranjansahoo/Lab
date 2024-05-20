@@ -45,6 +45,6 @@ namespace Lab.Models
         [ForeignKey("ApplicationUserId")]
         [ValidateNever]
         public ApplicationUser? ApplicationUser { get; set; }
-
+        public int Count { get; set; }
     }
 }
