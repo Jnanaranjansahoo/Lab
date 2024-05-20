@@ -34,6 +34,7 @@ namespace LabWeb.Areas.Admin.Controllers
             {
                 objClientList = _unitOfWork.Client.GetAll(x=>x.ApplicationUserId == userId ).ToList();
             }
+            ViewBag.ClientCount = objClientList.Count;
             return View(objClientList);
         }
         public IActionResult Upsert(int? id)
