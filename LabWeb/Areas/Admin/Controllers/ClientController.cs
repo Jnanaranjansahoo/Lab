@@ -28,12 +28,19 @@ namespace LabWeb.Areas.Admin.Controllers
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            
-            List<Client> objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
-            if(objClientList != null)
+            var isAdmin = User.IsInRole("Admin");
+
+            List<Client> objClientList;
+
+            if (isAdmin)
             {
-                objClientList = _unitOfWork.Client.GetAll(x=>x.ApplicationUserId == userId ).ToList();
+                objClientList = _unitOfWork.Client.GetAll(includeProperties: "Officer").ToList();
             }
+            else
+            {
+                objClientList = _unitOfWork.Client.GetAll(x => x.ApplicationUserId == userId, includeProperties: "Officer").ToList();
+            }
+
             ViewBag.ClientCount = objClientList.Count;
             return View(objClientList);
         }
