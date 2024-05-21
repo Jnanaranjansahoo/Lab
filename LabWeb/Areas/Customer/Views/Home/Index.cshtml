@@ -72,15 +72,21 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                                    <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                                </li>
+
+                                <li><hr class="dropdown-divider" /></li>
+
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
                                 </li>
 
                             </ul>
@@ -95,7 +101,7 @@
                             <ul class="dropdown-menu">
 
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                                 </li>
 
                             </ul>

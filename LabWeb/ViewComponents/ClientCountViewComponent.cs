@@ -10,5 +10,6 @@ namespace LabWeb.ViewComponents
         {
             _unitOfWork = unitOfWork;
         }
+
     }
 }
