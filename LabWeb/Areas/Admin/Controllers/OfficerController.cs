@@ -29,10 +29,10 @@ namespace LabWeb.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Officer obj)
         {
-            if (obj.Name == obj.Cost.ToString())
-            {
-                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            }
+            //if (obj.Name == obj.Cost.ToString())
+            //{
+            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            //}
             if (ModelState.IsValid)
             {
                 _unitOfWork.Officer.Add(obj);
