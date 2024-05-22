@@ -8,29 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lab.DataAcess.Migrations
 {
     /// <inheritdoc />
-    public partial class addappointmentttodb : Migration
+    public partial class addinitializertodb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Appointments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CuName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CMobile = table.Column<int>(type: "int", nullable: false),
-                    CDist = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CPos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CPin = table.Column<int>(type: "int", nullable: false),
-                    CLandMark = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointments", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -46,31 +28,18 @@ namespace Lab.DataAcess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Companies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pnumb = table.Column<int>(type: "int", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dist = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pincode = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Officers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cost = table.Column<int>(type: "int", nullable: true)
+                    Totalclient = table.Column<int>(type: "int", nullable: true),
+                    Mobile = table.Column<int>(type: "int", nullable: false),
+                    Dist = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pin = table.Column<int>(type: "int", nullable: false),
+                    LandMark = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,33 +103,6 @@ namespace Lab.DataAcess.Migrations
                         column: x => x.OfficerId,
                         principalTable: "Officers",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mobile = table.Column<int>(type: "int", nullable: false),
-                    Dist = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Pin = table.Column<int>(type: "int", nullable: false),
-                    LandMark = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Total = table.Column<double>(type: "float", nullable: false),
-                    OfficerId = table.Column<int>(type: "int", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Clients_Officers_OfficerId",
-                        column: x => x.OfficerId,
-                        principalTable: "Officers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -248,37 +190,111 @@ namespace Lab.DataAcess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Mobile = table.Column<int>(type: "int", nullable: false),
+                    Dist = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pin = table.Column<int>(type: "int", nullable: false),
+                    LandMark = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Total = table.Column<double>(type: "float", nullable: false),
+                    OfficerId = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Count = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clients_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Clients_Officers_OfficerId",
+                        column: x => x.OfficerId,
+                        principalTable: "Officers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CuName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CMobile = table.Column<int>(type: "int", nullable: false),
+                    CDist = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CPos = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CPin = table.Column<int>(type: "int", nullable: false),
+                    CLandMark = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: true),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Appointments_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Appointments_Clients_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "Clients",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Appointments",
-                columns: new[] { "Id", "CDist", "CLandMark", "CMobile", "CPin", "CPos", "CuName" },
+                columns: new[] { "Id", "ApplicationUserId", "CDist", "CLandMark", "CMobile", "CPin", "CPos", "ClientId", "CuName" },
                 values: new object[,]
                 {
-                    { 1, "Baragachha", "566", 1, 564, "Amba", "Chiku" },
-                    { 2, "Baragdsdachha", "566", 12, 42, "Amdba", "Chdiku" },
-                    { 3, "Baragaachha", "56236", 132, 45, "Adxcmba", "Chdfiku" }
+                    { 1, null, "Baragachha", "566", 1, 564, "Amba", null, "Chiku" },
+                    { 2, null, "Baragdsdachha", "566", 12, 42, "Amdba", null, "Chdiku" },
+                    { 3, null, "Baragaachha", "56236", 132, 45, "Adxcmba", null, "Chdfiku" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Officers",
-                columns: new[] { "Id", "Cost", "Name" },
+                columns: new[] { "Id", "Dist", "LandMark", "Mobile", "Name", "Pin", "Pos", "Totalclient" },
                 values: new object[,]
                 {
-                    { 1, 1, "Male" },
-                    { 2, 2, "FeMale" }
+                    { 1, "SWD9999001", "Near bara gachha", 123456789, "Fortune ", 90, "Pankapal", 5 },
+                    { 2, "SWD9999001", "Near bara gachha", 123456789, "Time", 90, "Pankapal", 5 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Clients",
-                columns: new[] { "Id", "CName", "Dist", "ImageUrl", "LandMark", "Mobile", "OfficerId", "Pin", "Pos", "Total" },
+                columns: new[] { "Id", "ApplicationUserId", "CName", "Count", "Dist", "ImageUrl", "LandMark", "Mobile", "OfficerId", "Pin", "Pos", "Total" },
                 values: new object[,]
                 {
-                    { 1, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
-                    { 2, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 },
-                    { 3, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
-                    { 4, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 },
-                    { 5, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
-                    { 6, "Fortune of Time", "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 }
+                    { 1, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
+                    { 2, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 },
+                    { 3, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
+                    { 4, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 },
+                    { 5, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 1, 90, "Pankapal", 1399.0 },
+                    { 6, null, "Fortune of Time", 0, "SWD9999001", "", "Near bara gachha", 123456789, 2, 90, "Pankapal", 1399.0 }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_ApplicationUserId",
+                table: "Appointments",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_ClientId",
+                table: "Appointments",
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -325,6 +341,11 @@ namespace Lab.DataAcess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Clients_ApplicationUserId",
+                table: "Clients",
+                column: "ApplicationUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Clients_OfficerId",
                 table: "Clients",
                 column: "OfficerId");
@@ -353,9 +374,6 @@ namespace Lab.DataAcess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients");
-
-            migrationBuilder.DropTable(
-                name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

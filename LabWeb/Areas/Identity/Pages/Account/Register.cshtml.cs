@@ -111,6 +111,7 @@ namespace LabWeb.Areas.Identity.Pages.Account
 
             public string? Role { get; set; }
             [ValidateNever]
+
             public IEnumerable<SelectListItem> RoleList { get; set; }
             [Required]
             public String? Name { get; set; }
@@ -124,8 +125,10 @@ namespace LabWeb.Areas.Identity.Pages.Account
             public String? Dist { get; set; }
             [Required]
             public int? Pincode { get; set; }
+            [Required]
             public int? OfficerId { get; set; }
             [ValidateNever]
+            
             public IEnumerable<SelectListItem> OfficerList { get; set; }
 
         }
@@ -137,7 +140,7 @@ namespace LabWeb.Areas.Identity.Pages.Account
 
             Input = new()
             {
-                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                RoleList = _roleManager.Roles.Select(u => u.Name).Select(i => new SelectListItem
                 {
                     Text = i,
                     Value = i

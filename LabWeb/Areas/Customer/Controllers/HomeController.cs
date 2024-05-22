@@ -93,68 +93,68 @@ namespace LabWeb.Areas.Customer.Controllers
                 return View(appointmentObj);
             }
         }
-        //[Authorize(Roles = SD.Role_Admin)]
-        //public IActionResult Delete(int? id)
-        //{
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    Appointment? appointmentFromDb = _unitOfWork.Appointment.Get(u => u.Id == id);
-        //    if (appointmentFromDb == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(appointmentFromDb);
-
-        //}
-
-        //[HttpPost, ActionName("Delete")]
-        //public IActionResult DeletePOST(int? id)
-        //{
-
-        //    var appointmentToBeDeleted = _unitOfWork.Appointment.Get(u => u.Id == id);
-        //    if (appointmentToBeDeleted == null)
-        //    {
-        //        return Json(new { success = false, Message = "Error while deleting" });
-        //    }
-
-        //    _unitOfWork.Appointment.Remove(appointmentToBeDeleted);
-        //    _unitOfWork.Save();
-
-        //    TempData["success"] = "Appointment Deleted Successfully";
-
-        //    return RedirectToAction("Appointment");
-
-        //}
-
-
-        #region API CALLS
-
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            List<Client> objClientList = _unitOfWork.Client.GetAll().ToList();
-            return Json(new { data = objClientList });
-        }
-        [HttpDelete]
+        [Authorize(Roles = SD.Role_Admin)]
         public IActionResult Delete(int? id)
         {
-            var clientToBeDeleted = _unitOfWork.Client.Get(u => u.Id == id);
-            if (clientToBeDeleted == null)
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Appointment? appointmentFromDb = _unitOfWork.Appointment.Get(u => u.Id == id);
+            if (appointmentFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(appointmentFromDb);
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+
+            var appointmentToBeDeleted = _unitOfWork.Appointment.Get(u => u.Id == id);
+            if (appointmentToBeDeleted == null)
             {
                 return Json(new { success = false, Message = "Error while deleting" });
             }
-            
 
-            _unitOfWork.Client.Remove(clientToBeDeleted);
+            _unitOfWork.Appointment.Remove(appointmentToBeDeleted);
             _unitOfWork.Save();
 
+            TempData["success"] = "Appointment Deleted Successfully";
 
-            return Json(new { success = true, message = "Delete Successful" });
+            return RedirectToAction("Appointment");
+
         }
-        #endregion
+
+
+        //#region API CALLS
+
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    List<Client> objClientList = _unitOfWork.Client.GetAll().ToList();
+        //    return Json(new { data = objClientList });
+        //}
+        //[HttpDelete]
+        //public IActionResult Delete(int? id)
+        //{
+        //    var clientToBeDeleted = _unitOfWork.Client.Get(u => u.Id == id);
+        //    if (clientToBeDeleted == null)
+        //    {
+        //        return Json(new { success = false, Message = "Error while deleting" });
+        //    }
+            
+
+        //    _unitOfWork.Client.Remove(clientToBeDeleted);
+        //    _unitOfWork.Save();
+
+
+        //    return Json(new { success = true, message = "Delete Successful" });
+        //}
+        //#endregion
 
 
 
