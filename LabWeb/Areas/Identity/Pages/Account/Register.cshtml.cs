@@ -125,7 +125,7 @@ namespace LabWeb.Areas.Identity.Pages.Account
             public String? Dist { get; set; }
             [Required]
             public int? Pincode { get; set; }
-            [Required]
+    
             public int? OfficerId { get; set; }
             [ValidateNever]
             
