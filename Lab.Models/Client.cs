@@ -37,7 +37,7 @@ namespace Lab.Models
         public int? OfficerId { get; set; }
         [ForeignKey("OfficerId")]
         [ValidateNever]
-        [Required]
+        
         public Officer? Officer { get; set; }
 
         public string? ImageUrl { get; set; }

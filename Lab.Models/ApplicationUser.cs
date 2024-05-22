@@ -12,6 +12,7 @@ namespace Lab.Models
         [Required]
         [Range(1000000000, 9999999999, ErrorMessage = "Enter a valid mobile number")]
         public int Pnumb { get; set; }
+
         [Required]
         public String? Address { get; set; }
         [Required]

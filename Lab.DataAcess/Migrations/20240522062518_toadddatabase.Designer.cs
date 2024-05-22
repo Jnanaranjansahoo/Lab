@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab.DataAcess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240512092114_addappointmentttodb")]
-    partial class addappointmentttodb
+    [Migration("20240522062518_toadddatabase")]
+    partial class toadddatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace Lab.DataAcess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CDist")
                         .IsRequired()
@@ -53,11 +56,18 @@ namespace Lab.DataAcess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CuName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ClientId");
 
                     b.ToTable("Appointments");
 
@@ -102,9 +112,15 @@ namespace Lab.DataAcess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("CName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
 
                     b.Property<string>("Dist")
                         .IsRequired()
@@ -139,6 +155,8 @@ namespace Lab.DataAcess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.HasIndex("OfficerId");
 
                     b.ToTable("Clients");
@@ -148,6 +166,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 1,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -161,6 +180,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 2,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -174,6 +194,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 3,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -187,6 +208,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 4,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -200,6 +222,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 5,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -213,6 +236,7 @@ namespace Lab.DataAcess.Migrations
                         {
                             Id = 6,
                             CName = "Fortune of Time",
+                            Count = 0,
                             Dist = "SWD9999001",
                             ImageUrl = "",
                             LandMark = "Near bara gachha",
@@ -224,42 +248,6 @@ namespace Lab.DataAcess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Lab.Models.Company", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Dist")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Pincode")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Pnumb")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Companies");
-                });
-
             modelBuilder.Entity("Lab.Models.Officer", b =>
                 {
                     b.Property<int>("Id")
@@ -268,12 +256,32 @@ namespace Lab.DataAcess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Cost")
+                    b.Property<string>("Dist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LandMark")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Mobile")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Pin")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Pos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Totalclient")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -283,14 +291,24 @@ namespace Lab.DataAcess.Migrations
                         new
                         {
                             Id = 1,
-                            Cost = 1,
-                            Name = "Male"
+                            Dist = "SWD9999001",
+                            LandMark = "Near bara gachha",
+                            Mobile = 123456789,
+                            Name = "Fortune of Time",
+                            Pin = 90,
+                            Pos = "Pankapal",
+                            Totalclient = 6
                         },
                         new
                         {
                             Id = 2,
-                            Cost = 2,
-                            Name = "FeMale"
+                            Dist = "SWD9999001",
+                            LandMark = "Near bara gachha",
+                            Mobile = 123456789,
+                            Name = "Fortune of Time",
+                            Pin = 90,
+                            Pos = "Pankapal",
+                            Totalclient = 7
                         });
                 });
 
@@ -536,13 +554,34 @@ namespace Lab.DataAcess.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
+            modelBuilder.Entity("Lab.Models.Appointment", b =>
+                {
+                    b.HasOne("Lab.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Lab.Models.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Client");
+                });
+
             modelBuilder.Entity("Lab.Models.Client", b =>
                 {
+                    b.HasOne("Lab.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Lab.Models.Officer", "Officer")
                         .WithMany()
                         .HasForeignKey("OfficerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Officer");
                 });

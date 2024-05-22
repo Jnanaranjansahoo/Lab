@@ -19,8 +19,26 @@ namespace Lab.DataAcess.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Officer>().HasData(
-                new Officer { Id = 1, Name = "Male", Cost = 1 },
-                new Officer { Id = 2, Name = "FeMale", Cost = 2 }
+                new Officer {
+                    Id = 1,
+                    Name = "Fortune of Time",
+                    Mobile = 123456789,
+                    Dist = "SWD9999001",
+                    Pos = "Pankapal",
+                    Pin = 90,
+                    LandMark = "Near bara gachha"
+                    
+                },
+                new Officer {
+                    Id = 2,
+                    Name = "Fortune of Time",
+                    Mobile = 123456789,
+                    Dist = "SWD9999001",
+                    Pos = "Pankapal",
+                    Pin = 90,
+                    LandMark = "Near bara gachha"
+                    
+                }
                 );
 
             modelBuilder.Entity<Appointment>().HasData(

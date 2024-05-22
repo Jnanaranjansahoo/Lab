@@ -253,12 +253,32 @@ namespace Lab.DataAcess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Cost")
+                    b.Property<string>("Dist")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LandMark")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Mobile")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Pin")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Pos")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Totalclient")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -268,14 +288,22 @@ namespace Lab.DataAcess.Migrations
                         new
                         {
                             Id = 1,
-                            Cost = 1,
-                            Name = "Male"
+                            Dist = "SWD9999001",
+                            LandMark = "Near bara gachha",
+                            Mobile = 123456789,
+                            Name = "Fortune of Time",
+                            Pin = 90,
+                            Pos = "Pankapal"
                         },
                         new
                         {
                             Id = 2,
-                            Cost = 2,
-                            Name = "FeMale"
+                            Dist = "SWD9999001",
+                            LandMark = "Near bara gachha",
+                            Mobile = 123456789,
+                            Name = "Fortune of Time",
+                            Pin = 90,
+                            Pos = "Pankapal"
                         });
                 });
 

@@ -48,54 +48,61 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                    <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
+                    <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
                 </li>
 
 
-                 @if (User.IsInRole(SD.Role_Admin))
+                @if (User.IsInRole(SD.Role_Admin))
                 {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Content Manegment
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
-                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Content Manegment
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Appointment</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                            </li>
 
-                    </ul>
-                </li>
+                            <li><hr class="dropdown-divider" /></li>
+
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                            </li>
+
+                        </ul>
+                    </li>
                 }
                 @if (User.IsInRole(SD.Role_Officer))
                 {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Content Manegment
-                    </a>
-                    <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Content Manegment
+                        </a>
+                        <ul class="dropdown-menu">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                            </li>
 
-                    </ul>
-                </li>
-                 }
+                        </ul>
+                    </li>
+                }
             </ul>
+
         </div>
         <partial name="_LoginPartial" />
     </div>
@@ -124,9 +131,34 @@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Cost" class="form-control border-0 shadow" />
-                    <label asp-for="Cost" class="ms-2"></label>
-                    <span asp-validation-for="Cost" class="text-danger"></span>
+                    <input asp-for="Mobile" class="form-control border-0 shadow" />
+                    <label asp-for="Mobile" class="ms-2 text-dark"></label>
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Dist" class="form-control border-0 shadow" />
+                    <label asp-for="Dist" class="ms-2 text-dark"></label>
+                    <span asp-validation-for="Dist" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pos" class="form-control border-0 shadow" />
+                    <label asp-for="Pos" class="ms-2 text-dark"></label>
+                    <span asp-validation-for="Pos" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pin" class="form-control border-0 shadow" />
+                    <label asp-for="Pin" class="ms-2 text-dark"></label>
+                    <span asp-validation-for="Pin" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="LandMark" class="form-control border-0 shadow" />
+                    <label asp-for="LandMark" class="ms-2 text-dark"></label>
+                    <span asp-validation-for="LandMark" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input placeholder="@ViewBag.ClientCount" disabled class="form-control border-0 shadow" />
+                    <label class="ms-2 text-dark">Total Client Added</label>
+                   
                 </div>
                 <div class="row mt-3">
                     <div class="col-6 col-md-3">
