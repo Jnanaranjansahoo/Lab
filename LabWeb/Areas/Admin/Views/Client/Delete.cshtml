@@ -1,5 +1,6 @@
 ﻿@model Client
 
+
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -47,13 +48,13 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                    <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
+                    <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
                 </li>
 
 
@@ -65,15 +66,21 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Officer" asp-action="Index">Officer</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Costumar" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                                <a class="dropdown-item" asp-area="Customer" asp-controller="Home" asp-action="Appointment">Appointment</a>
+                            </li>
+
+                            <li><hr class="dropdown-divider" /></li>
+
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
                             </li>
 
                         </ul>
@@ -88,18 +95,20 @@
                         <ul class="dropdown-menu">
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                             </li>
 
                         </ul>
                     </li>
                 }
             </ul>
+
         </div>
         <partial name="_LoginPartial" />
     </div>
 </nav>
 <!-- Navbar End -->
+
 
 
 <div class="card shadow border-0 m-4">
