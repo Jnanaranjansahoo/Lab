@@ -166,8 +166,14 @@
                     @foreach (var obj in Model)
                     {
                         <tr>
+                            <td>@obj.Id</td>
                             <td>@obj.Name</td>
-                            <td>@obj.Cost</td>
+                            <td>@obj.Mobile</td>
+                            <td>@obj.Dist</td>
+                            <td>@obj.Pos</td>
+                            <td>@obj.Pin</td>
+                            <td>@obj.LandMark</td>
+                            <td>@obj.Totalclient</td>
                             <td>
                                 <div class="w-75 btn-group" role="group">
                                     <a asp-controller="Officer" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
