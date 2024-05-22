@@ -10,7 +10,7 @@ namespace Lab.Models
         [Display(Name = "Enter Name")]
         public string? Name { get; set; }
 
-        [Display(Name = "Enter Name")]
+        [Display(Name = "Totalclient")]
         public int? Totalclient { get; set; }
 
         [Required]

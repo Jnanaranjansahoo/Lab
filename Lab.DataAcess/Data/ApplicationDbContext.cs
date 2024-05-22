@@ -27,7 +27,8 @@ namespace Lab.DataAcess.Data
                     Dist = "SWD9999001",
                     Pos = "Pankapal",
                     Pin = 90,
-                    LandMark = "Near bara gachha"
+                    LandMark = "Near bara gachha",
+                    Totalclient=5
 
                 },
                 new Officer
@@ -38,7 +39,8 @@ namespace Lab.DataAcess.Data
                     Dist = "SWD9999001",
                     Pos = "Pankapal",
                     Pin = 90,
-                    LandMark = "Near bara gachha"
+                    LandMark = "Near bara gachha",
+                    Totalclient = 5
 
                 }
                 );
