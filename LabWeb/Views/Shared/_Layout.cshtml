@@ -42,7 +42,12 @@
     <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+    @if (User.IsInRole(SD.Role_Admin))
+    {
+        <li class="nav-item">
+            <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
+        </li>
+    }
     <div class="">
         <main role="main" class="pb-3">
             
