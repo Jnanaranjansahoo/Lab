@@ -47,7 +47,7 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
@@ -60,7 +60,7 @@
                 @if (User.IsInRole(SD.Role_Admin))
                 {
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Content Manegment
                         </a>
                         <ul class="dropdown-menu">
@@ -69,7 +69,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                <a class="dropdown-item active" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                             </li>
 
                             <li class="nav-item">
@@ -80,6 +80,10 @@
 
                             <li class="nav-item">
                                 <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
                             </li>
 
                         </ul>
@@ -114,7 +118,8 @@
             <div class="col-12 text-center">
                 <h2 class="text-white py-2 ">Client List</h2>
             </div>
-            <h5 class="text-white">Total Clients: @ViewBag.ClientCount</h5>
+            <h5 class="text-white">Total Clients: @ViewBag.ClientCount X 10 = @ViewBag.Total</h5>
+            <h5 class="text-white" style="margin-left:85%">Total</h5>
         </div>
     </div>
     <div class=" card-body p-4">

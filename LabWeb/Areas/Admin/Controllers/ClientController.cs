@@ -53,6 +53,7 @@ namespace LabWeb.Areas.Admin.Controllers
             }
 
             ViewBag.ClientCount = objClientList.Count;
+            ViewBag.Total = objClientList.Count * 10;
             return View(objClientList);
         }
         public IActionResult Upsert(int? id)

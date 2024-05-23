@@ -1,4 +1,5 @@
 ﻿using Lab.DataAcess.Data;
+using Lab.DataAcess.Repository;
 using Lab.DataAcess.Repository.IRepository;
 using Lab.Models;
 using Lab.Models.ViewModels;
@@ -28,23 +29,17 @@ namespace LabWeb.Areas.Admin.Controllers
         public IActionResult Index()
         {
             List<ApplicationUser> objUserList = _db.ApplicationUsers.Include(u => u.Officer).ToList();
+            
+            var userRoles = _db.UserRoles.ToList();
+            var roles = _db.Roles.ToList();
+            
+            foreach (var user in objUserList)
+            {
+                var roleId = userRoles.FirstOrDefault(u => u.UserId == user.Id).RoleId;
+                user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
+            }
             return View(objUserList);
         }
-
-       
-        #region API CALLS
-
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            List<ApplicationUser> objUserList = _db.ApplicationUsers.Include(u => u.Officer).ToList();
-            return Json(new { data = objUserList });
-        }
-        [HttpDelete]
-        public IActionResult Delete(int? id)
-        {
-            return Json(new { success = true, message = "Delete Successful" });
-        }
-        #endregion
+        
     }
 }

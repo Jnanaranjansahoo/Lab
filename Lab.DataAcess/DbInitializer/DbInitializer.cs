@@ -58,7 +58,7 @@ namespace Lab.DataAcess.DbInitializer
                     UserName = "admin@dotnetmastery.com",
                     Email = "admin@dotnetmastery.com",
                     Name = "Gyana Ranjan Sahoo",
-                    PhoneNumber = "1234567890",
+                    Pnumb = 1234567890,
                     Address = "nothing",
                     Dist = "jangal",
                     City = "roadside",

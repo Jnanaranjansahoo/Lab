@@ -24,6 +24,8 @@ namespace Lab.Models
         [ForeignKey("OfficerId")]
         [ValidateNever]
         public Officer? Officer { get; set; }
+        [NotMapped]
+        public string? Role { get; set; }
 
     }
 }

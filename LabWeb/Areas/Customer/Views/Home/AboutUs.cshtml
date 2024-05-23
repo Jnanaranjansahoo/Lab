@@ -52,10 +52,10 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link " asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                        <a class="nav-item nav-link active" asp-area="Customer" asp-controller="Home" asp-action="AboutUs">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="Services">Services</a>
@@ -85,6 +85,10 @@
 
                                 <li class="nav-item">
                                     <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create User</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
                                 </li>
 
                             </ul>
