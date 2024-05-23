@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ApplicationUser>
 
 
 
@@ -137,7 +137,7 @@
                             Mobile No.
                         </th>
                         <th>
-                            Officer
+                            Officer Name
                         </th>
                        
                         <th>
@@ -147,16 +147,16 @@
                     </tr>
 
                 </thead>
-                @* <tbody>
-                    @foreach (var obj in Model)
+                <tbody>
+                    @foreach (var obj in Model.OrderBy(x => x.Id))
                     {
                         <tr>
                             
                             <td>@obj.Name</td>
                             <td>@obj.Email</td>
-                            <td>@obj.Mobile</td>
-                            <td>@obj.Officer.Namw</td>
-                            <td>@obj.</td>
+                            <td>@obj.PhoneNumber</td>
+                            <td>@obj.Officer?.Name</td>
+                            <td>@obj.Pincode</td>
                             
                             <td>
                                 <div class="w-75 btn-group" role="group">
@@ -168,12 +168,12 @@
                             </td>
                         </tr>
                     }
-                </tbody> *@
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 
-@section Scripts {
+@* @section Scripts {
     <script src="~/js/user.js"></script>
-}  
+}   *@

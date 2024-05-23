@@ -27,8 +27,8 @@ namespace LabWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            
-            return View();
+            List<ApplicationUser> objUserList = _db.ApplicationUsers.Include(u => u.Officer).ToList();
+            return View(objUserList);
         }
 
        
