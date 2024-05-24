@@ -40,6 +40,35 @@ namespace LabWeb.Areas.Admin.Controllers
             }
             return View(objUserList);
         }
-        
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            ApplicationUser? userFromDb = _db.ApplicationUsers.Find(id);
+            if (userFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(userFromDb);
+
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+
+            ApplicationUser? obj = _db.ApplicationUsers.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.ApplicationUsers.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
     }
 }

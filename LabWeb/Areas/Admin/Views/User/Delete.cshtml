@@ -1,5 +1,4 @@
-﻿@model List<ApplicationUser>
-
+﻿@model ApplicationUser
 
 
 <!-- Spinner Start -->
@@ -62,7 +61,7 @@
                 @if (User.IsInRole(SD.Role_Admin))
                 {
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Content Manegment
                         </a>
                         <ul class="dropdown-menu">
@@ -71,7 +70,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
+                                <a class="dropdown-item active" asp-area="Admin" asp-controller="Client" asp-action="Index">Clints</a>
                             </li>
 
                             <li class="nav-item">
@@ -85,7 +84,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="dropdown-item active" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Index">User</a>
                             </li>
 
                         </ul>
@@ -94,7 +93,7 @@
                 @if (User.IsInRole(SD.Role_Officer))
                 {
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Content Manegment
                         </a>
                         <ul class="dropdown-menu">
@@ -120,59 +119,65 @@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2 ">User List</h2>
+                <h2 class="text-white">Delete Client</h2>
             </div>
         </div>
     </div>
     <div class=" card-body p-4">
-        <div class="container">
-            
-            <table class="table table-bordered table-striped">
-                <thead>
+        <form method="post">
+            <input asp-for="Id" hidden />
 
-                    <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Mobile No.
-                        </th>
-                        
-                        <th>
-                           Role
-                        </th>
-                        <th></th>
-                    </tr>
+            <div class="border p-3">
 
-                </thead>
-                <tbody>
-                    @foreach (var obj in Model.OrderBy(x => x.Role))
-                    {
-                        <tr>
-                            
-                            <td>@obj.Name</td>
-                            <td>@obj.Email</td>
-                            <td>@obj.Pnumb</td>
-                            <td>@obj.Role</td>
-                            <td>
-                                <div class="w-75 btn-group" role="group">
-                                
-                                    <a asp-controller="User" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                                        <i class="bi bi-trash-fill"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Name" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Name" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pnumb" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Pnumb" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <textarea asp-for="Address" disabled class="form-control border-0 shadow"></textarea>
+                    <label asp-for="Address" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="City" disabled class="form-control border-0 shadow" />
+                    <label asp-for="City" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Dist" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Dist" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Pincode" disabled class="form-control border-0 shadow" />
+                    <label asp-for="Pincode" class="ms-2 text-dark"></label>
+
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="OfficerId" disabled class="form-control border-0 shadow" />
+                    <label asp-for="OfficerId" class="ms-2 text-dark"></label>
+
+                </div>
+                
+                
+                <div class="row mt-3">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-danger form-control">Delete</button>
+                    </div>
+                    <div class=" col-6 col-md-3">
+                        <a asp-controller="User" asp-action="Index" class="btn btn-secondary border form-control">
+                            Back To List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
-@* @section Scripts {
-    <script src="~/js/user.js"></script>
-}   *@
