@@ -122,52 +122,25 @@
 
 <style media="screen">
 
-
     body {
         background-color: #080710;
     }
 
-    .background {
-        width: 430px;
-        height: 520px;
-        position: absolute;
-        transform: translate(-50%,-50%);
-        left: 50%;
-        top: 50%;
-    }
 
-        .background .shape {
-            height: 200px;
-            width: 200px;
-            position: absolute;
-            border-radius: 50%;
-        }
 
-    .shape:first-child {
-        background: linear-gradient( #1845ad, #23a2f6 );
-        left: -80px;
-        top: -80px;
-    }
-
-    .shape:last-child {
-        background: linear-gradient( to right, #ff512f, #f09819 );
-        right: -30px;
-        bottom: -80px;
-    }
 
     form {
-        height: 520px;
-        width: 400px;
-        background-color: rgba(255,255,255,0.13);
-        position: absolute;
-        transform: translate(-50%,-50%);
-        top: 50%;
-        left: 50%;
+        background-color: black;
+        height:auto;
+        width:50%;
         border-radius: 10px;
         backdrop-filter: blur(10px);
         border: 2px solid rgba(255,255,255,0.1);
         box-shadow: 0 0 40px rgba(8,7,16,0.6);
         padding: 50px 35px;
+        margin-left:25%;
+        margin-right:25%;
+       
     }
 
         form * {
@@ -176,6 +149,7 @@
             letter-spacing: 0.5px;
             outline: none;
             border: none;
+            
         }
 
         form h3 {
@@ -205,7 +179,7 @@
     }
 
     ::placeholder {
-        color: #e5e5e5;
+        color: #bad1cc;
     }
 
     button {
@@ -239,47 +213,62 @@
                 background-color: rgba(255,255,255,0.47);
             }
 
-        .social .fb {
-            margin-left: 25px;
+        .social .pw {
+            margin-left: 75px;
         }
 
+        .social .ru {
+            margin-left: 20px;
+        }
+
+        .social .rmc {
+            margin-left: 35px;
+        }
         .social i {
             margin-right: 4px;
         }
-
 </style>
+<div class="card shadow border-0 my-4">
+    <div class=" card-body p-4">
+        <div class="row">
+            <div class="col-md-12">
+                <section>
+                    <form id="account" method="post">
 
-<form id="account" method="post">
+                        <h3>Login Here</h3>
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div>
+                            <label for="username">Username</label>
+                            <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com">
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
 
-    <h3>Login Here</h3>
-    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-    <div>
-        <label for="username">Username</label>
-        <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com">
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        <div>
+                            <label for="password">Password</label>
+                            <input asp-for="Input.Password" autocomplete="current-password" aria-required="true" placeholder="password">
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label asp-for="Input.RememberMe" class="form-label">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+
+                        <button id="login-submit" type="submit">Log In</button>
+
+
+                        <div class="social">
+                            <div class="pw"><a id="forgot-password" asp-page="./ForgotPassword">Forgot password?</a></div>
+                            <div class="ru"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a></div>
+                            <div class="rmc"> <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a></div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <label for="password">Password</label>
-        <input asp-for="Input.Password" autocomplete="current-password" aria-required="true" placeholder="password">
-        <span asp-validation-for="Input.Password" class="text-danger"></span>
-    </div>
-    <div class="checkbox mb-3">
-        <label asp-for="Input.RememberMe" class="form-label">
-            <input class="form-check-input" asp-for="Input.RememberMe" />
-            @Html.DisplayNameFor(m => m.Input.RememberMe)
-        </label>
-    </div>
-
-    <button id="login-submit" type="submit">Log In</button>
-
-
-    <div class="social">
-        <div class="go"><a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a></div>
-        <div class="fb"><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></div>
-    </div>
-</form>
-
+</div>
 
 
 @section Scripts {
