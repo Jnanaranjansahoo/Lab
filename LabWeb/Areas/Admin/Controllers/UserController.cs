@@ -20,7 +20,6 @@ namespace LabWeb.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _db;
-        
         public UserController(ApplicationDbContext db)
         {
             _db = db;
@@ -36,13 +35,13 @@ namespace LabWeb.Areas.Admin.Controllers
             foreach (var user in objUserList)
             {
                 var roleId = userRoles.FirstOrDefault(u => u.UserId == user.Id).RoleId;
-                user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
+                //user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
             }
             return View(objUserList);
         }
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(string? id)
         {
-            if (id == null || id == 0)
+            if (string.IsNullOrWhiteSpace(id))
             {
                 return NotFound();
             }
@@ -56,7 +55,7 @@ namespace LabWeb.Areas.Admin.Controllers
 
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePOST(int? id)
+        public IActionResult DeletePOST(string? id)
         {
 
             ApplicationUser? obj = _db.ApplicationUsers.Find(id);
