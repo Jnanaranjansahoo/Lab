@@ -116,97 +116,229 @@
 <!-- Navbar End -->
 
 
+<style media="screen">
+
+    .forthisform {
+        background-color: black;
+        height: auto;
+        width: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 40px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    .forthisform * {
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        .forthisform h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+    label {
+        display: block;
+        margin-top: 30px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    input {
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: rgba(255,255,255,0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    ::placeholder {
+        color: #bad1cc;
+    }
+
+    button {
+        margin-top: 50px;
+        width: 100%;
+        background-color: #ffffff;
+        color: #080710;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .social {
+        margin-top: 30px;
+        display: flex;
+    }
+
+        .social div {
+            background: red;
+            width: 150px;
+            border-radius: 3px;
+            padding: 5px 10px 10px 5px;
+            background-color: rgba(255,255,255,0.27);
+            color: #eaf0fb;
+            text-align: center;
+        }
+
+            .social div:hover {
+                background-color: rgba(255,255,255,0.47);
+            }
+
+        .social .pw {
+            margin-left: 75px;
+        }
+
+        .social .ru {
+            margin-left: 20px;
+        }
+
+        .social .rmc {
+            margin-left: 35px;
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
+</style>
+
+
 <div class="card shadow border-0 my-4">
-    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
-        <div class="row">
-            <div class="col-12 text-center">
-                @if (User.IsInRole(SD.Role_Admin))
-                {
-                    <h2 class="text-white py-2 ">Registar - ADMIN PORTAL</h2>
-                }
-                else
-                {
-                    <h2 class="text-white py-2 ">Registar</h2>
-                }
-            </div>
-        </div>
-    </div>
     <div class=" card-body p-4">
         <div class="row">
             <div class="col-md-12">
-                <form id="registerForm" class="row" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                    <h3 class=" border-bottom pb-3 mb-4 text-secondary text-center">Create a new account.</h3>
-                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                    <div class="form-floating mb-3 col-md-12">
-                        <input asp-for="Input.Name" class="form-control" placeholder="Enter Name" />
-                        <label asp-for="Input.Name" class="ms-2 text-muted">Name</label>
-                        <span asp-validation-for="Input.Name" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-12">
-                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                        <label asp-for="Input.Email" class="ms-2 text-muted">Email</label>
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-12">
-                        <input asp-for="Input.Address" class="form-control" placeholder="Enter Your Address" />
-                        <label asp-for="Input.Address" class="ms-2 text-muted">Address</label>
-                        <span asp-validation-for="Input.Address" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.Pnumb" class="form-control" placeholder="1234567890" />
-                        <label asp-for="Input.Pnumb" class="ms-2 text-muted">Mobile Number</label>
-                        <span asp-validation-for="Input.Pnumb" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.City" class="form-control" placeholder="Enter City" />
-                        <label asp-for="Input.City" class="ms-2 text-muted">City</label>
-                        <span asp-validation-for="Input.City" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.Dist" class="form-control" placeholder="Enter District" />
-                        <label asp-for="Input.Dist" class="ms-2 text-muted">District</label>
-                        <span asp-validation-for="Input.Dist" class="text-danger"></span>
-                    </div>
-                    
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.Pincode" class="form-control" placeholder="754170" />
-                        <label asp-for="Input.Pincode" class="ms-2 text-muted">Pincode</label>
-                        <span asp-validation-for="Input.Pincode" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password@123" />
-                        <label asp-for="Input.Password" class="ms-2 text-muted">Password</label>
-                        <span  asp-validation-for="Input.Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-3 col-md-6">
-                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password@123" />
-                        <label asp-for="Input.ConfirmPassword" class=" ms-2 text-muted">Confirm Password</label>
-                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    @if (User.IsInRole(SD.Role_Admin))
-                    {
-                        <div class="form-floating mb-3 col-md-6">
-                            <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
-                                <option disabled selected>- Select Role- </option>
-                            </select>
+                <section >
+                    <form class="forthisform" id="registerForm"  asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div>
+                            @if (User.IsInRole(SD.Role_Admin))
+                            {
+                                <h3 class="text-white py-2 ">Registar - ADMIN PORTAL</h3>
+                            }
+                            else
+                            {
+                                <h3 class="text-white py-2 ">Registar</h3>
+                            }
                         </div>
-                        <div class="form-floating mb-3 col-md-6">
-                            <select asp-for="Input.OfficerId" style="display:none;" asp-items="@Model.Input.OfficerList" class="form-select">
-                                <option disabled selected>- Select Officer - </option>
-                            </select>
-                            <span asp-validation-for="Input.OfficerId" class="text-danger"></span>
+                        
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Name" class="ms-2 text-muted">Name</label>
+                                <input asp-for="Input.Name" placeholder="Enter Name" class="form-control border-0" style="height: 55px;">
+                                <span asp-validation-for="Input.Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Email" class="ms-2 text-muted">Email</label>
+                                <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com" class="form-control border-0"  style="height: 55px;">
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                           
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Pnumb" class="ms-2 text-muted">Mobile Number</label>
+                                <input asp-for="Input.Pnumb" placeholder="1234567890" class="form-control border-0" style="height: 55px;">
+                                <span asp-validation-for="Input.Pnumb" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.City" class="ms-2 text-muted">City</label>
+                                <input asp-for="Input.City" placeholder="Enter City" class="form-control border-0" style="height: 55px;">
+                                <span asp-validation-for="Input.City" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Dist" class="ms-2 text-muted">District</label>
+                                <input asp-for="Input.Dist" placeholder="Enter District" class="form-control border-0" style="height: 55px;">
+                                <span asp-validation-for="Input.Dist" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Pincode" class="ms-2 text-muted">Pincode</label>
+                                <input asp-for="Input.Pincode" class="form-control border-0" style="height: 55px; placeholder="754170" />
+                                <span asp-validation-for="Input.Pincode" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-12">
+                                <label asp-for="Input.Address" class="ms-2 text-muted">Address</label>
+                                <textarea asp-for="Input.Address" placeholder="Enter Your Address" class="form-control border-0" style="height: 55px;"></textarea>
+                                <span asp-validation-for="Input.Address" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.Password" class="ms-2 text-muted">Password</label>
+                                <input asp-for="Input.Password" class="form-control border-0" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label asp-for="Input.ConfirmPassword" class=" ms-2 text-muted">Confirm Password</label>
+                                <input asp-for="Input.ConfirmPassword" class="form-control border-0" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;"/>
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            
+                            @if (User.IsInRole(SD.Role_Admin))
+                            {
+                                <div class="col-12 col-sm-6">
+                                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select text-dark " style="height: 55px;">
+                                        <option   disabled selected>- Select Role- </option>
+                                    </select>
+                                </div>
+                                <div class="form-floating mb-3 col-md-6">
+                                    <select asp-for="Input.OfficerId" style="display:none; height: 55px;" asp-items="@Model.Input.OfficerList" class="form-select form-control border-0">
+                                        <option disabled selected>- Select Officer - </option>
+                                    </select>
+                                    <span asp-validation-for="Input.OfficerId" class="text-danger"></span>
+                                </div>
+                            }
                         </div>
-                    }
-                    <div class=" col-12">
-                        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-                    </div>
-                </form>
+                        <button class="text-black" id="registerSubmit" type="submit">Register</button>
+                        
+                    </form>
+                </section>
             </div>
-            @* <div class="col-md-12 ">
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#Input_Role').change(function () {
+                var selection = $('#Input_Role Option:Selected').text();
+                if (selection== 'Officer') {
+                    $('#Input_OfficerId').show();
+                }
+                else {
+                    $('#Input_OfficerId').hide();
+                }
+            })
+        })
+    </script>
+}
+
+@* ============================================== Anather Login Code ============================================ *@
+@* <div class="col-md-12 ">
                 <section>
                     <p class="divider-text d-flex pt-3">or</p>
                     <h3>Use another service to register.</h3>
-          
+
                     @{
                         if ((Model.ExternalLogins?.Count ?? 0) == 0)
                         {
@@ -235,24 +367,3 @@
                     }
                 </section>
             </div> *@
-        </div>
-    </div>
-</div>
-
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            $('#Input_Role').change(function () {
-                var selection = $('#Input_Role Option:Selected').text();
-                if (selection== 'Officer') {
-                    $('#Input_OfficerId').show();
-                }
-                else {
-                    $('#Input_OfficerId').hide();
-                }
-            })
-        })
-    </script>
-}
