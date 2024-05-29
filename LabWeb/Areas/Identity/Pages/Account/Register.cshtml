@@ -291,7 +291,7 @@
                             
                             @if (User.IsInRole(SD.Role_Admin))
                             {
-                                <div class="col-12 col-sm-6">
+                                @* <div class="col-12 col-sm-6">
                                     <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select text-dark " style="height: 55px;">
                                         <option   disabled selected>- Select Role- </option>
                                     </select>
@@ -301,7 +301,19 @@
                                         <option disabled selected>- Select Officer - </option>
                                     </select>
                                     <span asp-validation-for="Input.OfficerId" class="text-danger"></span>
+                                </div> *@
+                                <div class="col-12 col-sm-6">
+                                    <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select text-dark" style="height: 55px;" id="Input_Role">
+                                        <option disabled selected>- Select Role -</option>
+                                    </select>
                                 </div>
+                                <div class="form-floating mb-3 col-md-6">
+                                    <select asp-for="Input.OfficerId" style="display:none; height: 55px;" asp-items="@Model.Input.OfficerList" class="form-select form-control border-0" id="Input_OfficerId">
+                                        <option disabled selected>- Select Officer -</option>
+                                    </select>
+                                    <span asp-validation-for="Input.OfficerId" class="text-danger"></span>
+                                </div>
+
                             }
                         </div>
                         <button class="text-black" id="registerSubmit" type="submit">Register</button>
@@ -316,7 +328,7 @@
 
 
 
-@section Scripts {
+@* @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
         $(document).ready(function () {
@@ -331,7 +343,45 @@
             })
         })
     </script>
+} *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            var roleSelect = $('#Input_Role');
+            var officerSelect = $('#Input_OfficerId');
+
+            // Function to toggle Officer dropdown
+            function toggleOfficerSelect() {
+                var selection = roleSelect.find('option:selected').text();
+                if (selection === 'Officer') {
+                    officerSelect.show();
+                } else {
+                    officerSelect.hide();
+                    officerSelect.val(''); // Clear value if hidden
+                }
+            }
+
+            // Initial check when page loads
+            toggleOfficerSelect();
+
+            // Event listener for role change
+            roleSelect.change(function () {
+                toggleOfficerSelect();
+            });
+
+            // Client-side form validation
+            $('form').submit(function (event) {
+                var selection = roleSelect.find('option:selected').text();
+                if (selection === 'Officer' && !officerSelect.val()) {
+                    event.preventDefault();
+                    alert('Please select an officer.');
+                }
+            });
+        });
+    </script>
 }
+
 
 @* ============================================== Anather Login Code ============================================ *@
 @* <div class="col-md-12 ">
