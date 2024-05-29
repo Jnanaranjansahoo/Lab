@@ -239,53 +239,53 @@
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Name" class="ms-2 text-muted">Name</label>
-                                <input asp-for="Input.Name" placeholder="Enter Name" class="form-control border-0" style="height: 55px;">
+                                <input asp-for="Input.Name" placeholder="Enter Name" class="form-control border-0 text-dark" style="height: 55px;">
                                 <span asp-validation-for="Input.Name" class="text-danger"></span>
                             </div>
 
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Email" class="ms-2 text-muted">Email</label>
-                                <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com" class="form-control border-0"  style="height: 55px;">
+                                <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="name@example.com" class="form-control border-0 text-dark" style="height: 55px;">
                                 <span asp-validation-for="Input.Email" class="text-danger"></span>
                             </div>
                            
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Pnumb" class="ms-2 text-muted">Mobile Number</label>
-                                <input asp-for="Input.Pnumb" placeholder="1234567890" class="form-control border-0" style="height: 55px;">
+                                <input asp-for="Input.Pnumb" placeholder="1234567890" class="form-control border-0 text-dark" style="height: 55px;">
                                 <span asp-validation-for="Input.Pnumb" class="text-danger"></span>
                             </div>
                             
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.City" class="ms-2 text-muted">City</label>
-                                <input asp-for="Input.City" placeholder="Enter City" class="form-control border-0" style="height: 55px;">
+                                <input asp-for="Input.City" placeholder="Enter City" class="form-control border-0 text-dark" style="height: 55px;">
                                 <span asp-validation-for="Input.City" class="text-danger"></span>
                             </div>
 
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Dist" class="ms-2 text-muted">District</label>
-                                <input asp-for="Input.Dist" placeholder="Enter District" class="form-control border-0" style="height: 55px;">
+                                <input asp-for="Input.Dist" placeholder="Enter District" class="form-control border-0 text-dark" style="height: 55px;">
                                 <span asp-validation-for="Input.Dist" class="text-danger"></span>
                             </div>
 
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Pincode" class="ms-2 text-muted">Pincode</label>
-                                <input asp-for="Input.Pincode" class="form-control border-0" style="height: 55px; placeholder="754170" />
+                                <input asp-for="Input.Pincode" class="form-control border-0 text-dark" style="height: 55px; placeholder="754170" />
                                 <span asp-validation-for="Input.Pincode" class="text-danger"></span>
                             </div>
 
                             <div class="col-12">
                                 <label asp-for="Input.Address" class="ms-2 text-muted">Address</label>
-                                <textarea asp-for="Input.Address" placeholder="Enter Your Address" class="form-control border-0" style="height: 55px;"></textarea>
+                                <textarea asp-for="Input.Address" placeholder="Enter Your Address" class="form-control border-0 text-dark" style="height: 55px;"></textarea>
                                 <span asp-validation-for="Input.Address" class="text-danger"></span>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.Password" class="ms-2 text-muted">Password</label>
-                                <input asp-for="Input.Password" class="form-control border-0" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;" />
+                                <input asp-for="Input.Password" class="form-control border-0 text-dark" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;" />
                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <label asp-for="Input.ConfirmPassword" class=" ms-2 text-muted">Confirm Password</label>
-                                <input asp-for="Input.ConfirmPassword" class="form-control border-0" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;"/>
+                                <input asp-for="Input.ConfirmPassword" class="form-control border-0 text-dark" autocomplete="new-password" aria-required="true" placeholder="Password@123" style="height: 55px;" />
                                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                             </div>
                             
@@ -297,7 +297,7 @@
                                     </select>
                                 </div>
                                 <div class="form-floating mb-3 col-md-6">
-                                    <select asp-for="Input.OfficerId" style="display:none; height: 55px;" asp-items="@Model.Input.OfficerList" class="form-select form-control border-0">
+                                    <select asp-for="Input.OfficerId" style="display:none; height: 55px;" asp-items="@Model.Input.OfficerList" class="form-select text-dark">
                                         <option disabled selected>- Select Officer - </option>
                                     </select>
                                     <span asp-validation-for="Input.OfficerId" class="text-danger"></span>
