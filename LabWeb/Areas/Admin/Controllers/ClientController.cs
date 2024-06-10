@@ -13,8 +13,9 @@ using System.Security.Claims;
 namespace LabWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    
+
     //[Authorize(Roles = SD.Role_Officer)]
+    [Authorize]
     public class ClientController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
