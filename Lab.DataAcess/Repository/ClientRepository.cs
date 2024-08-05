@@ -28,6 +28,7 @@ namespace Lab.DataAcess.Repository
                 objFromDb.Dist = obj.Dist;
                 objFromDb.Pos = obj.Pos;
                 objFromDb.Pin = obj.Pin;
+                objFromDb.OfficerId = obj.OfficerId;
                 objFromDb.LandMark = obj.LandMark;
                 if (obj.ImageUrl != null)
                 {
